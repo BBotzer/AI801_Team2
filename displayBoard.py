@@ -127,7 +127,7 @@ def makeMove(letter, xloc, yloc, gboard):
     
 
 
-"Do we need something to count the number of turns so we know when a game must be over?"
+
 
     
     
