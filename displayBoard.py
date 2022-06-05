@@ -133,7 +133,7 @@ def makeMove(letter, xloc, yloc, gboard):
     
     
 "Junk just to test things"
-def test():
+def testdisplayBoard():
     
     board = gameGrid(5,5)
     showGrid(board)
@@ -143,7 +143,7 @@ def test():
     showGrid(board)
     
     
-test()
+
     
     
     
