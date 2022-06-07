@@ -22,12 +22,11 @@ How to use this code:
 from displayBoard import *
 
 
-
+board = gameGrid(5,5)
 
 
 "test the displayBoard code"
-testdisplayBoard()
-
+testdisplayBoard(board)
 
 
 "Do we need a function to count the number of turns?"

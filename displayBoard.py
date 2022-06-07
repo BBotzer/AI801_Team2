@@ -60,15 +60,15 @@ def gridBoard():
 def showGrid(gboard):
 
     print()
-    print(' ' + gboard[0][0] + '  |  ' + gboard[0][1] + '  |  ' + gboard[0][2] + '  |   ' + gboard[0][3] + '  |   ' + gboard[0][4])
-    print('----------------------------------')
-    print(' ' + gboard[1][0] + '  |  ' + gboard[1][1] + '  |  ' + gboard[1][2] + '  |   ' + gboard[1][3] + '  |   ' + gboard[1][4])
-    print('----------------------------------')
-    print(' ' + gboard[2][0] + '  |  ' + gboard[2][1] + '  |  ' + gboard[2][2] + '  |   ' + gboard[2][3] + '  |   ' + gboard[2][4])
-    print('----------------------------------')
-    print(' ' + gboard[3][0] + '  |  ' + gboard[3][1] + '  |  ' + gboard[3][2] + '  |   ' + gboard[3][3] + '  |   ' + gboard[3][4])
-    print('----------------------------------')
-    print(' ' + gboard[4][0] + '  |  ' + gboard[4][1] + '  |  ' + gboard[4][2] + '  |   ' + gboard[4][3] + '  |   ' + gboard[4][4])
+    print(' ' + gboard[0][0] + '  |  ' + gboard[0][1] + '  |  ' + gboard[0][2] + '  |  ' + gboard[0][3] + '  |  ' + gboard[0][4])
+    print('--------------------------------------')
+    print(' ' + gboard[1][0] + '  |  ' + gboard[1][1] + '  |  ' + gboard[1][2] + '  |  ' + gboard[1][3] + '  |  ' + gboard[1][4])
+    print('--------------------------------------')
+    print(' ' + gboard[2][0] + '  |  ' + gboard[2][1] + '  |  ' + gboard[2][2] + '  |  ' + gboard[2][3] + '  |  ' + gboard[2][4])
+    print('--------------------------------------')
+    print(' ' + gboard[3][0] + '  |  ' + gboard[3][1] + '  |  ' + gboard[3][2] + '  |  ' + gboard[3][3] + '  |  ' + gboard[3][4])
+    print('--------------------------------------')
+    print(' ' + gboard[4][0] + '  |  ' + gboard[4][1] + '  |  ' + gboard[4][2] + '  |  ' + gboard[4][3] + '  |  ' + gboard[4][4])
     print()
     
 
@@ -81,33 +81,34 @@ def gameGrid(xgrid=5, ygrid=5):
     gboard = [['' for i in range(col)] for j in range(row)]
     
     "Assigns intial values to each space, probably could have done in a loop but I didn't..."
-    gboard[0][0] = '0,0 '
-    gboard[0][1] = '0,1 '
-    gboard[0][2] = '0,2 '
-    gboard[0][3] = '0,3 '
-    gboard[0][4] = '0,4 '
-    gboard[1][0] = '1,0 '
-    gboard[1][1] = '1,1 '
-    gboard[1][2] = '1,2 '
-    gboard[1][3] = '1,3 '
-    gboard[1][4] = '1,4 '
-    gboard[2][0] = '2,0 '
-    gboard[2][1] = '2,1 '
-    gboard[2][2] = '2,2 '
-    gboard[2][3] = '2,3 '
-    gboard[2][4] = '2,4 '
-    gboard[3][0] = '3,0 '
-    gboard[3][1] = '3,1 '
-    gboard[3][2] = '3,2 '
-    gboard[3][3] = '3,3 '
-    gboard[3][4] = '3,4 '
-    gboard[4][0] = '4,0 '
-    gboard[4][1] = '4,1 '
-    gboard[4][2] = '4,2 '
-    gboard[4][3] = '4,3 '
-    gboard[4][4] = '4,4 '
+    gboard[0][0] = '0,0'
+    gboard[0][1] = '0,1'
+    gboard[0][2] = '0,2'
+    gboard[0][3] = '0,3'
+    gboard[0][4] = '0,4'
+    gboard[1][0] = '1,0'
+    gboard[1][1] = '1,1'
+    gboard[1][2] = '1,2'
+    gboard[1][3] = '1,3'
+    gboard[1][4] = '1,4'
+    gboard[2][0] = '2,0'
+    gboard[2][1] = '2,1'
+    gboard[2][2] = '2,2'
+    gboard[2][3] = '2,3'
+    gboard[2][4] = '2,4'
+    gboard[3][0] = '3,0'
+    gboard[3][1] = '3,1'
+    gboard[3][2] = '3,2'
+    gboard[3][3] = '3,3'
+    gboard[3][4] = '3,4'
+    gboard[4][0] = '4,0'
+    gboard[4][1] = '4,1'
+    gboard[4][2] = '4,2'
+    gboard[4][3] = '4,3'
+    gboard[4][4] = '4,4'
     
     "returns the built grid"
+    "should we also return the board size to pass into the win condition?"
     return gboard
     
         
@@ -120,7 +121,7 @@ def makeMove(letter, xloc, yloc, gboard):
     
     "update the board postion"
     "!!!!!THIS NEEDS A CHECK ON VALID LOCATIONS THAT HAVEN'T BEEN TAKEN"
-    gboard[x][y] = '  ' + letter + ' '
+    gboard[x][y] = ' ' + letter + ' '
     
     "return the updated board to check for wins and the next move"
     return gboard
@@ -133,9 +134,8 @@ def makeMove(letter, xloc, yloc, gboard):
     
     
 "Junk just to test things"
-def testdisplayBoard():
+def testdisplayBoard(board):
     
-    board = gameGrid(5,5)
     showGrid(board)
     
     board = makeMove('O', 2, 3, board)
