@@ -13,29 +13,75 @@ Trying to make the grid to check values
 
 def winCondition(board, nSame = 4):
 
-    "transfered the board to tempbaord because python won't run the board due to types"
+    
     "need to try: exception for index out of range"
+    "or... I can run this as three cycles... On searches for rows, one for columns, one for diags"
     
     i = 0
     j = 0
-    for row in board:     
-        for entry in row: 
-            if entry == " X " or " O " or " x " or " o ":   
-                if entry == (board[i][j+1] and board[i][j+2] and board[i][j+3]):
-                    print("Return Winner Row - This is incorrectly printing... don't know why")
+    for i in range(5):     
+        for j in range(5): 
+            if board[i][j] == " X " or " O " or " x " or " o ":   
+                if board[i][j] == board[i][j+1] and board[i][j] == board[i][j+2] and board[i][j] == board[i][j+3]:
+                    print("Return Winner Rw ")
                     break
-                elif entry == (board[i+1][j] and board[i+2][j] and board[i+3][j]):
+                elif board[i][j] == board[i+1][j] and board[i][j] == board[i+2][j] and board[i][j] == board[i+3][j]:
                     print("return Winner Column")
                     break
-                elif entry == (board[i+1][j+1] and board[i+2][j+2] and board[i+3][j+3]):
+                elif board[i][j] == board[i+1][j+1] and board[i][j] == board[i+2][j+2] and board[i][j] == board[i+3][j+3]:
                     print("return winner Diagonal")
                     break
                 else:
                     print("Return No winners")
-                    break
-                break
-            break
-        break
+                
+            j+=j
+            print('Jay' + str(j))
+        i+=i
+        print('Eye'+str(i))
+        
+        
+def winRows(r,c,board):
+    "Checks for winners in the rows."
+    "With a 5x5 grid you need to check 5 rows but only go over 2 columns as the + # searches the rest"
+    "The + # could be generalized by some means (board size and # to win needed)"
+    for r in range(5):
+        for c in range(2):
+            if board[r][c] == board[r][c+1] and board[r][c] == board[r][c+2] and board[r][c] == board[r][c+3]:
+                print("Row Winner in Row" + str(r))
+                return True
+            else:
+                return False
+                
+def winCols(r,c,board):
+    "Checks for winners in the columns"
+    "With a 5x5 grid you need to check 5 columns but only two rows as the + # searches the rest"
+    "The + # could be generalized by some means (board size and # to win needed)"
+    
+    for r in range(2):
+        for c in range(5):
+            if board[r][c] == board[r+1][c] and board[r][c] == board[r+2][c] and board[r][c] == board[r+3][c]:
+                print("Column winnin in Col: " + str(c))
+                return True
+            else:
+                return False
+            
+            
+def winDiag(r,c,board):
+    "Checks for winners along the diagonals"
+    "General number of solutions for a square board is:"
+    "2 * ((board size + 1 - number needed to win)**2)"
+    "the 2 * here is due to the mirror symetry of the board"
+    "The diagonals run in both directions, need to think about a"
+    "quick solver for that..."
+    
+    "check center diags and shifts along the center to the edge"
+    "check the off diags  using +/- counts"
+    
+    
+    
+                
+            
+        
 
                     
                         
