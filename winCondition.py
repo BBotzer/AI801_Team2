@@ -40,33 +40,38 @@ def winCondition(board, nSame = 4):
         print('Eye'+str(i))
         
         
-def winRows(r,c,board):
+def winRows(board):
     "Checks for winners in the rows."
     "With a 5x5 grid you need to check 5 rows but only go over 2 columns as the + # searches the rest"
     "The + # could be generalized by some means (board size and # to win needed)"
+    "genearlized columns = (baord - needed to win + 1"
+    "generalized ros = board size"
     for r in range(5):
         for c in range(2):
             if board[r][c] == board[r][c+1] and board[r][c] == board[r][c+2] and board[r][c] == board[r][c+3]:
-                print("Row Winner in Row" + str(r))
+                print("Row Winner in Row: " + str(r))
                 return True
-            else:
-                return False
+            
+    return False
                 
-def winCols(r,c,board):
+def winCols(board, r=2,c=5):
     "Checks for winners in the columns"
     "With a 5x5 grid you need to check 5 columns but only two rows as the + # searches the rest"
     "The + # could be generalized by some means (board size and # to win needed)"
+    "generalize rows = (board - needed to win + 1"
+    "genearalized cols = board size"
     
     for r in range(2):
         for c in range(5):
             if board[r][c] == board[r+1][c] and board[r][c] == board[r+2][c] and board[r][c] == board[r+3][c]:
-                print("Column winnin in Col: " + str(c))
+                print("Column win in Col: " + str(c))
                 return True
-            else:
-                return False
+            
+                
+    return False
             
             
-def winDiag(r,c,board):
+def winDiag(board):
     "Checks for winners along the diagonals"
     "General number of solutions for a square board is:"
     "2 * ((board size + 1 - number needed to win)**2)"
@@ -78,31 +83,52 @@ def winDiag(r,c,board):
     "check the off diags  using +/- counts"
     
     
+
+
+    "end of the board"
+    brdEnd = len(board) - 1
+    brdSize= len(board)
+    "need to Win may be passed later for different game varients"
+    "prob need to run all of the checks in a loop on the general condition"
+    ntWin = 4
+    
+    
+    "check main diags and center shifts first"
+    "genearlized times through = (len board - need + 1)"
+    
+    "look along the forward main diagonal"
+    "only need to check if center square is taken"
+    for r in range(2):
+        if board[r][r] == board[r+1][r+1] and board[r][r] == board[r+2][r+2] and board[r][r] == board[r+3][r+3]:
+            print("Win along the main forward diagonal: " + str(board[r][r]) + ', ' + str(board[r+3][r+3]))
+            return True
+    "Look along the backward main diagonal"
+    for r in range(2):
+        if board[brdEnd-r][r] == board[brdEnd-r-1][r+1] and board[brdEnd-r][r] == board[brdEnd-r-2][r+2] and board[brdEnd-r][r] == board[brdEnd-r-3][r+3]:
+            print("Win along the main backward diagonal: " + str(board[brdEnd-r][r]) + ', ' + str(board[brdEnd-r-3][r+3]))
+            return True
+
+
+
+    "Look along the smaller diagonals, forward and backward "
+    for r in range(1):
+        if board[r][r+1] == board[r+1][r+2] and board[r][r+1] == board[r+2][r+3] and board[r][r+1] == board[r+3][r+4]:
+            print("Win along an upper minor forward diagonal")
+            return True
+    
+        
+    
+        return True
+    
+        
+            
+    
     
                 
             
         
 
-                    
-                        
-    "check to see if a proper value has been filled into a piece of the board"
-    "use this location as a starting point (may need to check so that we don't break bounds of the grid"
-
-"""
-This works
-
-    tempboard = board
-    if tempboard[0][0] == (tempboard[0][1] and tempboard[0][2] and tempboard[0][3]):
-        print("winner")
-    else:
-        return False
-"""  
-        
-       
-"""
-Still working on this to cycle a grid through the space to run the checks
-"""
-                    
+  
 
     
 
