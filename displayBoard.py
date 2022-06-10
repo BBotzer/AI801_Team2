@@ -72,7 +72,7 @@ def showGrid(gboard):
     print()
     
 
-def gameGrid(xgrid=5, ygrid=5):
+def makeGrid(xgrid=5, ygrid=5):
     
     "builds a default 5x5 grid for tictactoe"
     row, col = (xgrid,ygrid)
