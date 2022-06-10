@@ -22,7 +22,7 @@ How to use this code:
 from displayBoard import *
 
 
-board = gameGrid(5,5)
+board = makeGrid(5,5)
 
 
 "test the displayBoard code"
