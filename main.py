@@ -38,6 +38,14 @@ Functions we still need:
     Check for win condition (probably easier with the grid)
     
     Check for which grid positions are open (no moves on that location yet)
+<<<<<<< Updated upstream
+=======
+        Update the makeMove() function run a check for possibleMoves()
+        if possibleMoves are none and the board is full, a tie must be called
+        
+    makeGrid() needs to be built so that it will automatically create the n by n
+        grid without having to hard code the strings "0,0" etc.
+>>>>>>> Stashed changes
     
     AI Solvers:
         MiniMax

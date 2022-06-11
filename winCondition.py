@@ -117,7 +117,34 @@ def winDiag(board):
             return True
     
         
+<<<<<<< Updated upstream
     
+=======
+            
+def winCondition(board, ntwin = 4):
+    """
+    Checks the rows, columns, and diagonals for possible winners of a 5x5
+    game of TicTacToe with 4 needed to secure vicotry
+
+    Parameters
+    ----------
+    board : list
+        the board grid.
+    nSame : int, optional
+        The number of same marks it takes to win the game. The default is 4.
+
+    Returns
+    -------
+    True on a Win
+    False on no Wins
+
+    """
+        
+     #need to try: exception for index out of range
+     #or... I can run this as three cycles... On searches for rows, one for columns, one for diags#
+     
+    if winRows(board, ntwin) == True or winCols(board, ntwin) == True or winDiag(board, ntwin) == True:
+>>>>>>> Stashed changes
         return True
     
         
