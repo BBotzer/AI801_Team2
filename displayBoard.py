@@ -8,7 +8,7 @@ Authors:
 Revision 1.0 (06/05/2022) - Botzer - Creation of baseBoard and gridBoard functions
 """
 
-"counting each square on the board 0 - 24"
+#counting each square on the board 0 - 24
 def baseBoard():
 
     print()
@@ -24,7 +24,7 @@ def baseBoard():
     print()
    
     
-"displaying the current game state from the passed board list 0 - 24"
+#displaying the current game state from the passed board list 0 - 24
 def showBase(board):
 
     print()
@@ -41,7 +41,7 @@ def showBase(board):
     
 
 
-"counting each square as a grid location (might be easier to check winners)"
+#counting each square as a grid location (might be easier to check winners)
 def gridBoard():
 
     print()
@@ -74,13 +74,13 @@ def showGrid(gboard):
 
 def makeGrid(xgrid=5, ygrid=5):
     
-    "builds a default 5x5 grid for tictactoe"
+    #builds a default 5x5 grid for tictactoe
     row, col = (xgrid,ygrid)
     
-    "builds grid"
+    #builds grid
     gboard = [['' for i in range(col)] for j in range(row)]
     
-    "Assigns intial values to each space, probably could have done in a loop but I didn't..."
+    #Assigns intial values to each space, probably could have done in a loop but I didn't...
     gboard[0][0] = '0,0'
     gboard[0][1] = '0,1'
     gboard[0][2] = '0,2'
@@ -107,40 +107,29 @@ def makeGrid(xgrid=5, ygrid=5):
     gboard[4][3] = '4,3'
     gboard[4][4] = '4,4'
     
-    "returns the built grid"
-    "should we also return the board size to pass into the win condition?"
+    #returns the built grid
+    #should we also return the board size to pass into the win condition?
     return gboard
     
         
     
 def makeMove(letter, xloc, yloc, gboard):
-    "take the move letter, the x and y location, and the current board state"
+    #take the move letter, the x and y location, and the current board state
     
-    "get x, y location"
+    #get x, y location
     x, y = (xloc,yloc)
     
-    "update the board postion"
-    "!!!!!THIS NEEDS A CHECK ON VALID LOCATIONS THAT HAVEN'T BEEN TAKEN"
+    #update the board postion
+    #!!!!!THIS NEEDS A CHECK ON VALID LOCATIONS THAT HAVEN'T BEEN TAKEN
     gboard[x][y] = ' ' + letter + ' '
     
-    "return the updated board to check for wins and the next move"
+    #return the updated board to check for wins and the next move
     return gboard
     
 
 
 
 
-    
-    
-    
-"Junk just to test things"
-def testdisplayBoard(board):
-    
-    showGrid(board)
-    
-    board = makeMove('O', 2, 3, board)
-    board = makeMove('X', 1, 1, board)
-    showGrid(board)
     
     
 

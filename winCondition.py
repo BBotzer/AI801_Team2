@@ -9,43 +9,16 @@ Win condition function to check if the win condition is met
 Trying to make the grid to check values
 """
 
-
-
-def winCondition(board, nSame = 4):
-
-    
-    "need to try: exception for index out of range"
-    "or... I can run this as three cycles... On searches for rows, one for columns, one for diags"
-    
-    i = 0
-    j = 0
-    for i in range(5):     
-        for j in range(5): 
-            if board[i][j] == " X " or " O " or " x " or " o ":   
-                if board[i][j] == board[i][j+1] and board[i][j] == board[i][j+2] and board[i][j] == board[i][j+3]:
-                    print("Return Winner Rw ")
-                    break
-                elif board[i][j] == board[i+1][j] and board[i][j] == board[i+2][j] and board[i][j] == board[i+3][j]:
-                    print("return Winner Column")
-                    break
-                elif board[i][j] == board[i+1][j+1] and board[i][j] == board[i+2][j+2] and board[i][j] == board[i+3][j+3]:
-                    print("return winner Diagonal")
-                    break
-                else:
-                    print("Return No winners")
-                
-            j+=j
-            print('Jay' + str(j))
-        i+=i
-        print('Eye'+str(i))
-        
-        
-def winRows(board):
+     
+def winRows(board, ntwin=4):
+    """
     "Checks for winners in the rows."
     "With a 5x5 grid you need to check 5 rows but only go over 2 columns as the + # searches the rest"
     "The + # could be generalized by some means (board size and # to win needed)"
     "genearlized columns = (baord - needed to win + 1"
     "generalized ros = board size"
+    """
+    
     for r in range(5):
         for c in range(2):
             if board[r][c] == board[r][c+1] and board[r][c] == board[r][c+2] and board[r][c] == board[r][c+3]:
@@ -53,13 +26,16 @@ def winRows(board):
                 return True
             
     return False
-                
-def winCols(board, r=2,c=5):
+    
+            
+def winCols(board, ntwin=4,  r=2,c=5):
+    """
     "Checks for winners in the columns"
     "With a 5x5 grid you need to check 5 columns but only two rows as the + # searches the rest"
     "The + # could be generalized by some means (board size and # to win needed)"
     "generalize rows = (board - needed to win + 1"
     "genearalized cols = board size"
+    """
     
     for r in range(2):
         for c in range(5):
@@ -71,7 +47,8 @@ def winCols(board, r=2,c=5):
     return False
             
             
-def winDiag(board):
+def winDiag(board, ntwin=4):
+    """
     "Checks for winners along the diagonals"
     "General number of solutions for a square board is:"
     "2 * ((board size + 1 - number needed to win)**2)"
@@ -81,28 +58,26 @@ def winDiag(board):
     
     "check center diags and shifts along the center to the edge"
     "check the off diags  using +/- counts"
-    
-    
+    """
 
-
-    "end of the board"
+    #end of the board
     brdEnd = len(board) - 1
     brdSize= len(board)
-    "need to Win may be passed later for different game varients"
-    "prob need to run all of the checks in a loop on the general condition"
-    ntWin = 4
+    #need to Win may be passed later for different game varients
+    #prob need to run all of the checks in a loop on the general condition
     
     
-    "check main diags and center shifts first"
-    "genearlized times through = (len board - need + 1)"
     
-    "look along the forward main diagonal"
-    "only need to check if center square is taken"
+    #check main diags and center shifts first
+    #genearlized times through = (len board - need + 1)
+    
+    #look along the forward main diagonal
+    #only need to check if center square is taken
     for r in range(2):
         if board[r][r] == board[r+1][r+1] and board[r][r] == board[r+2][r+2] and board[r][r] == board[r+3][r+3]:
             print("Win along the main forward diagonal: " + str(board[r][r]) + ', ' + str(board[r+3][r+3]))
             return True
-    "Look along the backward main diagonal"
+    #Look along the backward main diagonal
     for r in range(2):
         if board[brdEnd-r][r] == board[brdEnd-r-1][r+1] and board[brdEnd-r][r] == board[brdEnd-r-2][r+2] and board[brdEnd-r][r] == board[brdEnd-r-3][r+3]:
             print("Win along the main backward diagonal: " + str(board[brdEnd-r][r]) + ', ' + str(board[brdEnd-r-3][r+3]))
@@ -110,19 +85,67 @@ def winDiag(board):
 
 
 
-    "Look along the smaller diagonals, forward and backward "
+    #Look along the smaller diagonals, forward and backward
+    
+    #I think these can all be more generalized if the +1, +2, +3 are looped
+    #over where the values are the ntWin values
+    
+    #generalized times through for first minor diags = (len board - need)
+    
     for r in range(1):
+        #upper minor forward diag
         if board[r][r+1] == board[r+1][r+2] and board[r][r+1] == board[r+2][r+3] and board[r][r+1] == board[r+3][r+4]:
             print("Win along an upper minor forward diagonal")
             return True
-    
         
-    
+        #lower minor forward diag
+        if board[r+1][r] == board[r+2][r+1] and board[r+1][r] == board[r+3][r+2] and board[r+1][r] == board[r+4][r+3]:
+            print("Win along lower minor forward diagonal")
+            return True
+        
+        #upper minor backwards diag
+        if board[brdEnd-1-r][r] == board[brdEnd-2-r][r+1] and board[brdEnd-1-r][r] == board[brdEnd-3-r][r+2] and board[brdEnd-1-r][r] == board[brdEnd-4-r][r+3]:
+            print("Win along upper minor backward diagonal")
+            return True
+        
+        #lower minor backwards diag
+        if board[brdEnd][r+1] == board[brdEnd-1-r][r+2] and board[brdEnd][r+1] == board[brdEnd-2-r][r+3] and board[brdEnd][r+1] == board[brdEnd-3-r][r+4]:
+            print("Win along lower minor backward diagonal")
+            return True
+
+    #No Winners
     return False
     
         
             
+def winCondition(board, ntwin = 4):
+    """
+    Checks the rows, columns, and diagonals for possible winners of a 5x5
+    game of TicTacToe with 4 needed to secure vicotry
+
+    Parameters
+    ----------
+    board : list
+        the board grid.
+    nSame : int, optional
+        The number of same marks it takes to win the game. The default is 4.
+
+    Returns
+    -------
+    None.
+
+    """
+        
+     #need to try: exception for index out of range
+     #or... I can run this as three cycles... On searches for rows, one for columns, one for diags#
+     
+    if winRows(board, ntwin) == True or winCols(board, ntwin) == True or winDiag(board, ntwin) == True:
+        return True
+    else:
+        return False
     
+    
+       
     
                 
             
