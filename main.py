@@ -20,11 +20,12 @@ How to use this code:
 
 #import the functions from displayBoard file
 from displayBoard import *
+
 from winCondition import *
 
 
-board = makeGrid(5,5)
 
+board = gameGrid(5,5)
 
 
 
