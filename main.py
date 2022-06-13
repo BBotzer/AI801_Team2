@@ -20,14 +20,14 @@ How to use this code:
 
 #import the functions from displayBoard file
 from displayBoard import *
-from winCondtion import *
+from winCondition import *
 
 
 board = makeGrid(5,5)
 
 
-#test the displayBoard code
-testdisplayBoard(board)
+
+
 
 
 #Do we need a function to count the number of turns?
