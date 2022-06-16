@@ -39,12 +39,16 @@ playerFirst = queryPlayer()
 
 
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 #Do we need a function to count the number of turns?
 
 
 """
+
 Functions we still need:
     
     Generalize n by n win condition (currently works for 5x5 with 4 need to win)
@@ -61,6 +65,5 @@ Functions we still need:
         
     OTHERS???
 """
-
 
 
