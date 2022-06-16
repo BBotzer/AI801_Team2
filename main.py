@@ -18,14 +18,24 @@ How to use this code:
 
 """
 
-#import the functions from displayBoard file
+#import the functions from other file
 from displayBoard import *
-
 from winCondition import *
+from gameSetup import *
 
 
 
-board = gameGrid(5,5)
+#Query user for the board dimensions
+board = queryBoard()
+
+#Query user for the number needed to win
+ntWin = needWin(board)
+
+#Query user for who goes first
+playerFirst = queryPlayer()
+
+
+
 
 
 
@@ -42,11 +52,9 @@ Functions we still need:
     Check for which grid positions are open (no moves on that location yet)
         Update the makeMove() function run a check for possibleMoves()
         
-    makeGrid() needs to be built so that it will automatically create the n by n
-        grid without having to hard code the strings "0,0" etc.
     
     AI Solvers:
-        MiniMax
+        MiniMax - Ambika
         A*
         Breadth
         Depth
