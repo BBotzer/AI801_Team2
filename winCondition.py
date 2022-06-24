@@ -137,7 +137,7 @@ def winDiag(board, ntWin=4):
                 count += 1
                 
                 if count == (ntWin -1):
-                    print("Win along the main forward diagonal: " + str(board[r][r]) + ', ' + str(board[r+3][r+3]))
+                    print("Win along the main forward diagonal starting in: " + str(r) + ', ' + str(r))
                     return True
                 
             j += 1
@@ -162,7 +162,7 @@ def winDiag(board, ntWin=4):
                 count += 1
                 
                 if count == (ntWin -1):
-                    print("Win along the main backward diagonal: " + str(board[brdEnd-r][r]) + ', ' + str(board[brdEnd-r-3][r+3]))
+                    print("Win along the main backward diagonal starting in: " + str(brdEnd-r) + ', ' + str(r))
                     return True
                 
             j += 1
