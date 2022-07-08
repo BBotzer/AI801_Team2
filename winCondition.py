@@ -11,115 +11,313 @@ Trying to make the grid to check values
 
 
 
-def winCondition(board, nSame = 4):
-
-    
-    "need to try: exception for index out of range"
-    "or... I can run this as three cycles... On searches for rows, one for columns, one for diags"
-    
-    i = 0
-    j = 0
-    for i in range(5):     
-        for j in range(5): 
-            if board[i][j] == " X " or " O " or " x " or " o ":   
-                if board[i][j] == board[i][j+1] and board[i][j] == board[i][j+2] and board[i][j] == board[i][j+3]:
-                    print("Return Winner Rw ")
-                    break
-                elif board[i][j] == board[i+1][j] and board[i][j] == board[i+2][j] and board[i][j] == board[i+3][j]:
-                    print("return Winner Column")
-                    break
-                elif board[i][j] == board[i+1][j+1] and board[i][j] == board[i+2][j+2] and board[i][j] == board[i+3][j+3]:
-                    print("return winner Diagonal")
-                    break
-                else:
-                    print("Return No winners")
-                
-            j+=j
-            print('Jay' + str(j))
-        i+=i
-        print('Eye'+str(i))
         
         
-def winRows(board):
+def winRows(board, ntWin=4):
     "Checks for winners in the rows."
     "With a 5x5 grid you need to check 5 rows but only go over 2 columns as the + # searches the rest"
     "The + # could be generalized by some means (board size and # to win needed)"
-    "genearlized columns = (baord - needed to win + 1"
+    "genearlized columns = (blard - needed to win + 1"
     "generalized ros = board size"
-    for r in range(5):
-        for c in range(2):
-            if board[r][c] == board[r][c+1] and board[r][c] == board[r][c+2] and board[r][c] == board[r][c+3]:
-                print("Row Winner in Row: " + str(r))
-                return True
+    
+    brdSize = len(board)
+    
+    for r in range(brdSize):
+        
+        #r maps the row here [r,j]
+        #j maps the position in the row [r,j]
+        
+        j = 0
+        
+        count = 0
+        
+        #loop through the depth of the board
+        #don't worry about checking extra spaces
+            #Could minimize checks by looking at 'j' and 'count' and 'ntWin'
+        while j < (brdSize - 1):
             
-    return False
+            if board[r][j] == board[r][j+1]:
+                count += 1
                 
-def winCols(board, r=2,c=5):
+                if count == (ntWin -1):
+                    print("Row win in Row: " + str(r))
+                    return True
+            #check condition to prevent excessive iteration through the board
+            #Will stop when it is not possible to win a column
+            if (brdSize - j) <= (ntWin - count):
+                break
+            
+            #increment possition across the row
+            j += 1
+      
+        
+    return False
+   
+
+             
+def winCols(board,  ntWin=4):
     "Checks for winners in the columns"
     "With a 5x5 grid you need to check 5 columns but only two rows as the + # searches the rest"
     "The + # could be generalized by some means (board size and # to win needed)"
     "generalize rows = (board - needed to win + 1"
     "genearalized cols = board size"
     
-    for r in range(2):
-        for c in range(5):
-            if board[r][c] == board[r+1][c] and board[r][c] == board[r+2][c] and board[r][c] == board[r+3][c]:
-                print("Column win in Col: " + str(c))
-                return True
+    
+    brdSize = len(board)
+    
+    for c in range(brdSize):
+        
+        #c maps the column here [j,c]
+        #j maps the position in the colum [j,c]
+        
+        j = 0
+        
+        count = 0
+        
+        #loop through the depth of the board
+        #don't worry about checking extra spaces
+            #Could minimize checks by looking at 'j' and 'count' and 'ntWin'
+        while j < (brdSize - 1):
             
+            if board[j][c] == board[j+1][c]:
+                count += 1
+                
+                if count == (ntWin -1):
+                    print("Column win in Col: " + str(c))
+                    return True
+            #check condition to prevent excessive iteration through the board
+            #Will stop when it is not possible to win a column
+            if (brdSize - j) <= (ntWin - count):
+                break
+            
+            #increment possition down the column
+            j += 1
+             
                 
     return False
             
             
-def winDiag(board):
+            
+def winDiag(board, ntWin=4):
     "Checks for winners along the diagonals"
     "General number of solutions for a square board is:"
     "2 * ((board size + 1 - number needed to win)**2)"
     "the 2 * here is due to the mirror symetry of the board"
-    "The diagonals run in both directions, need to think about a"
-    "quick solver for that..."
-    
-    "check center diags and shifts along the center to the edge"
-    "check the off diags  using +/- counts"
-    
+
     
 
-
-    "end of the board"
+    #end of the board in index
     brdEnd = len(board) - 1
+    #Size of the board
     brdSize= len(board)
     "need to Win may be passed later for different game varients"
     "prob need to run all of the checks in a loop on the general condition"
-    ntWin = 4
     
     
     "check main diags and center shifts first"
     "genearlized times through = (len board - need + 1)"
     
     "look along the forward main diagonal"
-    "only need to check if center square is taken"
-    for r in range(2):
-        if board[r][r] == board[r+1][r+1] and board[r][r] == board[r+2][r+2] and board[r][r] == board[r+3][r+3]:
-            print("Win along the main forward diagonal: " + str(board[r][r]) + ', ' + str(board[r+3][r+3]))
-            return True
-    "Look along the backward main diagonal"
-    for r in range(2):
-        if board[brdEnd-r][r] == board[brdEnd-r-1][r+1] and board[brdEnd-r][r] == board[brdEnd-r-2][r+2] and board[brdEnd-r][r] == board[brdEnd-r-3][r+3]:
-            print("Win along the main backward diagonal: " + str(board[brdEnd-r][r]) + ', ' + str(board[brdEnd-r-3][r+3]))
-            return True
-
-
-
-    "Look along the smaller diagonals, forward and backward "
-    for r in range(1):
-        if board[r][r+1] == board[r+1][r+2] and board[r][r+1] == board[r+2][r+3] and board[r][r+1] == board[r+3][r+4]:
-            print("Win along an upper minor forward diagonal")
-            return True
+    "only need to check if center square is taken as a quick check for some cases (not implemented)"
     
+    #Number of possible wins you have along a main diagonal
+    for r in range(brdSize - ntWin + 1):
         
-<<<<<<< Updated upstream
+        #position incrementer for the top left diagonal edge
+        j = 0
+        
+        #number in a row counter (how close to win)
+        count = 0
+        
+        #need to increment j to move along
+        while j < (ntWin - 1):
+            
+            if board[r+j][r+j] == board[r+j+1][r+j+1]:
+                #need to count the number in a row in case we win and need to return out
+                count += 1
+                
+                if count == (ntWin -1):
+                    print("Win along the main forward diagonal starting in: " + str(r) + ', ' + str(r))
+                    return True
+                
+            j += 1
+                     
+            
+    "Look along the backward main diagonal"
+    #Number of possible wins you have along a main diagonal
+    for r in range(brdSize - ntWin + 1):
+        
+        #position incrementer for the bottom left diagonal edge
+        j = 0
+        
+        #number in a row counter (how close to a win)
+        count = 0
+        
+        #need to increment j to move along
+        while j < (ntWin - 1):
+            
+            #Check back one row, and over one column
+            if board[brdEnd-r-j][r+j] == board[brdEnd-r-j-1][r+j+1]:
+                #need to count the number in a row in case we win and need to return out
+                count += 1
+                
+                if count == (ntWin -1):
+                    print("Win along the main backward diagonal starting in: " + str(brdEnd-r) + ', ' + str(r))
+                    return True
+                
+            j += 1
+
+
+
+    #All Minor diagonal (mD) must be looked at.  This can be done with another for loop
+    #to move along all of the upper and lower, forward and backward diagonals (4 loops needed)
+
+
+    "Look along all minor upper forward diagonals"
     
-=======
+    #The diags follow a pattern of number of possible wins from the main of
+    #size - ntWin + 1 - (the amount off from the main diag)
+    
+    #amount off from the main diagonal
+    #mD = minor Diagonals count goes from 1 -> minor diagonals needed
+    
+    for mD in range(1, (brdSize-ntWin+1)):
+    
+        #Number of possible wins you have along a  diagonal adjusted for the minor diagonal
+        for r in range(brdSize - ntWin + 1 -mD):
+            
+            #position incrementer for the top left diagonal edge
+            j = 0
+            
+            #number in a row counter (how close to win)
+            count = 0
+            
+            #need to increment j to move along
+            while j < (ntWin - 1):
+                
+                if board[r+j][r+j+mD] == board[r+j+1][r+j+mD+1]:
+                    #need to count the number in a row in case we win and need to return out
+                    count += 1
+                    
+                    if count == (ntWin -1):
+                        #print("Win along the minor upper forward diagonal: " + str(board[r][r]) + ', ' + str(board[r+3][r+3]))
+                        print("Win from a minor upper foward diagonal starting in " + str(r) + ", " + str(r+mD))
+                        return True
+                    
+                j += 1
+    
+    
+    
+    "Look along all minor lower forward diagonals"
+    #The diags follow a pattern of number of possible wins from the main of
+    #size - ntWin + 1 - (the amount off from the main diag)
+    
+    #amount off from the main diagonal
+    #mD = minor Diagonals count goes from 1 -> minor diagonals needed
+    
+    for mD in range(1, (brdSize-ntWin+1)):
+    
+        #Number of possible wins you have along a  diagonal adjusted for the minor diagonal
+        for r in range(brdSize - ntWin + 1 -mD):
+            
+            #position incrementer for the top left diagonal edge
+            j = 0
+            
+            #number in a row counter (how close to win)
+            count = 0
+            
+            #need to increment j to move along
+            while j < (ntWin - 1):
+                
+                if board[r+j+mD][r+j] == board[r+j+mD+1][r+j+1]:
+                    #need to count the number in a row in case we win and need to return out
+                    count += 1
+                    
+                    if count == (ntWin -1):
+                        #print("Win along the minor upper forward diagonal: " + str(board[r][r]) + ', ' + str(board[r+3][r+3]))
+                        print("Win from a minor lower foward diagonal starting in " + str(r) + ", " + str(r+mD))
+                        return True
+                    
+                j += 1
+    
+    
+    
+    
+    
+    
+    
+    "Look along all minor upper backward diagonals"
+    #The diags follow a pattern of number of possible wins from the main of
+    #size - ntWin + 1 - (the amount off from the main diag)
+    
+    #amount off from the main diagonal
+    #mD = minor Diagonals count goes from 1 -> minor diagonals needed
+    
+    for mD in range(1, (brdSize-ntWin+1)):
+    
+        #Number of possible wins you have along a  diagonal adjusted for the minor diagonal
+        for r in range(brdSize - ntWin + 1 -mD):
+            
+            #position incrementer for the top left diagonal edge
+            j = 0
+            
+            #number in a row counter (how close to win)
+            count = 0
+            
+            #need to increment j to move along
+            while j < (ntWin - 1):
+                
+                if board[brdEnd-r-j-mD][r+j] == board[brdEnd-r-j-mD-1][r+j+1]:
+                    #need to count the number in a row in case we win and need to return out
+                    count += 1
+                    
+                    if count == (ntWin -1):
+                        #print("Win along the minor upper forward diagonal: " + str(board[r][r]) + ', ' + str(board[r+3][r+3]))
+                        print("Win from a minor upper backward diagonal starting in " + str(brdEnd-r-mD) + ", " + str(r))
+                        return True
+                    
+                j += 1
+
+
+
+
+    "Look along all minor lower backward diagonals"
+    #The diags follow a pattern of number of possible wins from the main of
+    #size - ntWin + 1 - (the amount off from the main diag)
+    
+    #amount off from the main diagonal
+    #mD = minor Diagonals count goes from 1 -> minor diagonals needed
+    
+    for mD in range(1, (brdSize-ntWin+1)):
+    
+        #Number of possible wins you have along a  diagonal adjusted for the minor diagonal
+        for r in range(brdSize - ntWin + 1 -mD):
+            
+            #position incrementer for the top left diagonal edge
+            j = 0
+            
+            #number in a row counter (how close to win)
+            count = 0
+            
+            #need to increment j to move along
+            while j < (ntWin - 1):
+                
+                if board[brdEnd-r-j][r+j+mD] == board[brdEnd-r-j-1][r+j+mD+1]:
+                    #need to count the number in a row in case we win and need to return out
+                    count += 1
+                    
+                    if count == (ntWin -1):
+                        #print("Win along the minor upper forward diagonal: " + str(board[r][r]) + ', ' + str(board[r+3][r+3]))
+                        print("Win from a minor lower backward diagonal starting in " + str(brdEnd-r) + ", " + str(r+mD))
+                        return True
+                    
+                j += 1
+
+
+
+    #No Diagonal winners
+    return False
+
             
 def winCondition(board, ntwin = 4):
     """
@@ -144,8 +342,9 @@ def winCondition(board, ntwin = 4):
      #or... I can run this as three cycles... On searches for rows, one for columns, one for diags#
      
     if winRows(board, ntwin) == True or winCols(board, ntwin) == True or winDiag(board, ntwin) == True:
->>>>>>> Stashed changes
         return True
+    else:
+        return False
     
         
             

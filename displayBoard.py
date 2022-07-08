@@ -5,9 +5,12 @@ Authors:
     Brandon Botzer
 
     
-Revision 1.0 (06/05/2022) - Botzer - Creation of baseBoard and gridBoard functions
+Revision 1.0 (06/05/2022) - Botzer - Creation of baseBoard and gridBoard function
+Revision 2.0 (06/16/2022) - Botzer - Created a generalized board for n x n play
 """
 
+"""
+Not using these grid designs
 #counting each square on the board 0 - 24
 def baseBoard():
 
@@ -55,57 +58,52 @@ def gridBoard():
     print('----------------------------------')
     print(' ' + '4,0 ' + ' | ' + '4,1 ' + ' | ' + '4,2 ' + ' | ' + '4,3 ' + ' | ' + '4,4')
     print()
-
+"""
 
 def showGrid(gboard):
+    """
+    Parameters
+    ----------
+    gboard : list
+        the game board to pass in
 
+    Returns
+    -------
+    None.
+    
+    Prints the current game board for n x n tic tac toe
+    """
+    size = len(gboard)
+    linestr = ''
+    
     print()
-    print(' ' + gboard[0][0] + '  |  ' + gboard[0][1] + '  |  ' + gboard[0][2] + '  |  ' + gboard[0][3] + '  |  ' + gboard[0][4])
-    print('--------------------------------------')
-    print(' ' + gboard[1][0] + '  |  ' + gboard[1][1] + '  |  ' + gboard[1][2] + '  |  ' + gboard[1][3] + '  |  ' + gboard[1][4])
-    print('--------------------------------------')
-    print(' ' + gboard[2][0] + '  |  ' + gboard[2][1] + '  |  ' + gboard[2][2] + '  |  ' + gboard[2][3] + '  |  ' + gboard[2][4])
-    print('--------------------------------------')
-    print(' ' + gboard[3][0] + '  |  ' + gboard[3][1] + '  |  ' + gboard[3][2] + '  |  ' + gboard[3][3] + '  |  ' + gboard[3][4])
-    print('--------------------------------------')
-    print(' ' + gboard[4][0] + '  |  ' + gboard[4][1] + '  |  ' + gboard[4][2] + '  |  ' + gboard[4][3] + '  |  ' + gboard[4][4])
+    
+    for i in range(size):
+        for j in range(size):
+            linestr = linestr + gboard[i][j] + ' | '
+        print(linestr)
+        print("-" * len(linestr))
+        linestr = ''
+    
     print()
     
 
 def makeGrid(xgrid=5, ygrid=5):
     
-    #builds a default 5x5 grid for tictactoe
+    #builds a general sized grid
+    #Currently this is a square board!
     row, col = (xgrid,ygrid)
     
     #builds grid
     gboard = [['' for i in range(col)] for j in range(row)]
     
-    #Assigns intial values to each space, probably could have done in a loop but I didn't...
-    gboard[0][0] = '0,0'
-    gboard[0][1] = '0,1'
-    gboard[0][2] = '0,2'
-    gboard[0][3] = '0,3'
-    gboard[0][4] = '0,4'
-    gboard[1][0] = '1,0'
-    gboard[1][1] = '1,1'
-    gboard[1][2] = '1,2'
-    gboard[1][3] = '1,3'
-    gboard[1][4] = '1,4'
-    gboard[2][0] = '2,0'
-    gboard[2][1] = '2,1'
-    gboard[2][2] = '2,2'
-    gboard[2][3] = '2,3'
-    gboard[2][4] = '2,4'
-    gboard[3][0] = '3,0'
-    gboard[3][1] = '3,1'
-    gboard[3][2] = '3,2'
-    gboard[3][3] = '3,3'
-    gboard[3][4] = '3,4'
-    gboard[4][0] = '4,0'
-    gboard[4][1] = '4,1'
-    gboard[4][2] = '4,2'
-    gboard[4][3] = '4,3'
-    gboard[4][4] = '4,4'
+    #Assigns intial values to each space (0 - n)
+    
+    for i in range(row):
+        for j in range (col):
+            
+            gboard[i][j] = str(i) + ',' + str(j)
+            
     
     #returns the built grid
     #should we also return the board size to pass into the win condition?
