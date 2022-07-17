@@ -108,10 +108,23 @@ def makeGrid(xgrid=5, ygrid=5):
     #returns the built grid
     #should we also return the board size to pass into the win condition?
     return gboard
+
+#Checks if the space was taken or free for a move. Returns True or False   
+def spaceIsFree(gboard, x, y):
+    if(gboard[x][y]== 'X' or 'Y'):
+        return False
+    else:
+        return True
+
+
+def aiMove():
+    #Minimax to make move
     
-        
-    
-def makeMove(letter, xloc, yloc, gboard):
+    return
+
+
+#We need a getter method to get these values so we can call it from main.
+def playerMove(letter, xloc, yloc, gboard):
     #take the move letter, the x and y location, and the current board state
     
     #get x, y location

@@ -28,7 +28,7 @@ How to use this code:
 from displayBoard import *
 from winCondition import *
 from gameSetup import *
-from generalizedCheckWin import *
+
 
 
 #Query user for the board dimensions
@@ -40,21 +40,20 @@ ntWin = needWin(board)
 #Query user for who goes first
 playerFirst = queryPlayer()
 
-if queryPlayer():
+#I made up the winConditions method, but it would be easier to run this loop
+#if we combine all the win condition methods into one so only one method needs to be false here.
+if pchoice == True: 
     player = 'X'
     bot = 'O'
-    while not checkWin():
-        playerMove()
-        compMove()
+    while winConditions == False:
+        playerMove(player)
+        aiMove(bot)
 else:
     player = 'O'
     bot = 'X'
-    while not checkWin():
-        compMove()
-        playerMove()
-
-    
-
+    while winConditions == False:
+        aiMove(bot)
+        playerMove(player)   
 
 
 
