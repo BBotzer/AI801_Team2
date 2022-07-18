@@ -1,19 +1,21 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jun  7 14:33:47 2022
+Created on Mon Jul 18 15:16:32 2022
 
-@author: Brandon Botzer
+@author: btb51
 
-Win condition function to check if the win condition is met
+Uses the base template of winCondition().  
 
-Does not implement moving Grid.  Moves through proper wins.
+Applies a final check of == mark at the last step to see if the 'Win' is in line
+with the mark (X or O) we are looking for.
+
 """
 
 
 
         
         
-def winRows(board, ntWin=4):
+def winRowsMark(board, mark, ntWin=4):
     "Checks for winners in the rows."
     "With a 5x5 grid you need to check 5 rows but only go over 2 columns as the + # searches the rest"
     "The + # could be generalized by some means (board size and # to win needed)"
@@ -39,8 +41,7 @@ def winRows(board, ntWin=4):
             if board[r][j] == board[r][j+1]:
                 count += 1
                 
-                if count == (ntWin -1):
-                    print("Row win in Row: " + str(r))
+                if count == (ntWin -1) and board[r][j] == mark:
                     return True
             #check condition to prevent excessive iteration through the board
             #Will stop when it is not possible to win a column
@@ -55,7 +56,7 @@ def winRows(board, ntWin=4):
    
 
              
-def winCols(board,  ntWin=4):
+def winColsMark(board, mark, ntWin=4):
     "Checks for winners in the columns"
     "With a 5x5 grid you need to check 5 columns but only two rows as the + # searches the rest"
     "The + # could be generalized by some means (board size and # to win needed)"
@@ -82,8 +83,7 @@ def winCols(board,  ntWin=4):
             if board[j][c] == board[j+1][c]:
                 count += 1
                 
-                if count == (ntWin -1):
-                    print("Column win in Col: " + str(c))
+                if count == (ntWin -1) and board[j][c] == mark:
                     return True
             #check condition to prevent excessive iteration through the board
             #Will stop when it is not possible to win a column
@@ -98,7 +98,7 @@ def winCols(board,  ntWin=4):
             
             
             
-def winDiag(board, ntWin=4):
+def winDiagMark(board, mark, ntWin=4):
     "Checks for winners along the diagonals"
     "General number of solutions for a square board is:"
     "2 * ((board size + 1 - number needed to win)**2)"
@@ -136,8 +136,7 @@ def winDiag(board, ntWin=4):
                 #need to count the number in a row in case we win and need to return out
                 count += 1
                 
-                if count == (ntWin -1):
-                    print("Win along the main forward diagonal starting in: " + str(r) + ', ' + str(r))
+                if count == (ntWin -1) and board[r+j][r+j] == mark:
                     return True
                 
             j += 1
@@ -161,8 +160,7 @@ def winDiag(board, ntWin=4):
                 #need to count the number in a row in case we win and need to return out
                 count += 1
                 
-                if count == (ntWin -1):
-                    print("Win along the main backward diagonal starting in: " + str(brdEnd-r) + ', ' + str(r))
+                if count == (ntWin -1) and board[brdEnd-r-j][r+j] == mark:
                     return True
                 
             j += 1
@@ -199,9 +197,8 @@ def winDiag(board, ntWin=4):
                     #need to count the number in a row in case we win and need to return out
                     count += 1
                     
-                    if count == (ntWin -1):
+                    if count == (ntWin -1) and board[r+j][r+j+mD] == mark:
                         #print("Win along the minor upper forward diagonal: " + str(board[r][r]) + ', ' + str(board[r+3][r+3]))
-                        print("Win from a minor upper foward diagonal starting in " + str(r) + ", " + str(r+mD))
                         return True
                     
                 j += 1
@@ -233,9 +230,8 @@ def winDiag(board, ntWin=4):
                     #need to count the number in a row in case we win and need to return out
                     count += 1
                     
-                    if count == (ntWin -1):
+                    if count == (ntWin -1) and board[r+j+mD][r+j] == mark:
                         #print("Win along the minor upper forward diagonal: " + str(board[r][r]) + ', ' + str(board[r+3][r+3]))
-                        print("Win from a minor lower foward diagonal starting in " + str(r) + ", " + str(r+mD))
                         return True
                     
                 j += 1
@@ -271,9 +267,8 @@ def winDiag(board, ntWin=4):
                     #need to count the number in a row in case we win and need to return out
                     count += 1
                     
-                    if count == (ntWin -1):
+                    if count == (ntWin -1) and board[brdEnd-r-j-mD][r+j] == mark:
                         #print("Win along the minor upper forward diagonal: " + str(board[r][r]) + ', ' + str(board[r+3][r+3]))
-                        print("Win from a minor upper backward diagonal starting in " + str(brdEnd-r-mD) + ", " + str(r))
                         return True
                     
                 j += 1
@@ -306,9 +301,8 @@ def winDiag(board, ntWin=4):
                     #need to count the number in a row in case we win and need to return out
                     count += 1
                     
-                    if count == (ntWin -1):
+                    if count == (ntWin -1) and board[brdEnd-r-j][r+j+mD] == mark:
                         #print("Win along the minor upper forward diagonal: " + str(board[r][r]) + ', ' + str(board[r+3][r+3]))
-                        print("Win from a minor lower backward diagonal starting in " + str(brdEnd-r) + ", " + str(r+mD))
                         return True
                     
                 j += 1
@@ -319,7 +313,7 @@ def winDiag(board, ntWin=4):
     return False
 
             
-def winCondition(board, ntwin = 4):
+def winConditionMark(board, mark, ntwin = 4):
     """
     Checks the rows, columns, and diagonals for possible winners of a 5x5
     game of TicTacToe with 4 needed to secure vicotry
@@ -338,24 +332,26 @@ def winCondition(board, ntwin = 4):
 
     """
         
-     #need to try: exception for index out of range
-     #or... I can run this as three cycles... On searches for rows, one for columns, one for diags#
      
-    if winRows(board, ntwin) == True or winCols(board, ntwin) == True or winDiag(board, ntwin) == True:
+    if winRowsMark(board, mark, ntwin) == True or winColsMark(board, mark, ntwin) == True or winDiagMark(board, mark, ntwin) == True:
         return True
     else:
         return False
     
-        
+
+def drawCondition(board):
+    
+    for i in range(len(board)):
+        for j in range(len(board)):
+            
+            #Go through the board until you find a space you can move
+            if board[i][j] != 'X' and board[i][j] != 'O':
+                return False
+            
+    #No more spaces to move
+    return True
+ 
             
     
     
-                
-            
-        
-
-  
-
-    
-
-
+ 

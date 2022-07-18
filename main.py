@@ -28,6 +28,9 @@ How to use this code:
 from displayBoard import *
 from winCondition import *
 from gameSetup import *
+# I don't think this is needed...from generalizedCheckWin import *
+from takeTurns import *
+from winConditionsMarks import *
 
 
 
@@ -41,12 +44,20 @@ ntWin = needWin(board)
 playerFirst = queryPlayer()
 
 
+if playerFirst:
+    player = 'X'
+    bot = 'O'
+    while not winCondition(board, ntWin):
+        playerMove(board, player, bot, ntWin)
+        compMove(board, player, bot, ntWin)
+else:
+    player = 'O'
+    bot = 'X'
+    while not winCondition(board, ntWin):
+        compMove(board, player, bot, ntWin)
+        playerMove(board, player, bot, ntWin)
 
 
-
-
-
-#Do we need a function to count the number of turns?
 
 
 """
