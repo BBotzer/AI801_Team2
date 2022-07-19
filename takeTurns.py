@@ -47,7 +47,7 @@ def playerMove(board, player, bot, ntWin):
             
             if ((tempboard[i][j] != ' X ' and tempboard[i][j] != ' O ') or tempboard[i][j] == ''):
                 tempboard[i][j] = player
-                score = minimax(tempboard, 0, True, player, bot, ntWin)
+                score = minimax(tempboard, 0, False, player, bot, ntWin)
                 #board[i][j] = ' '  #This might not be needed as it undoes the move.  We are doing this is a funciton (pass by value) so it may should be a different board...???
                 if score < bestScore:
                     bestScore = score
@@ -74,7 +74,7 @@ def compMove(board, player, bot, ntWin):
             
             if ((tempboard[i][j] != ' X ' and tempboard[i][j] != ' O ') or tempboard[i][j] == ''):
                 tempboard[i][j] = bot
-                score = minimax(tempboard, 0, False, player, bot, ntWin)
+                score = minimax(tempboard, 0, True, player, bot, ntWin)
                 #board[i][j] = ' '  #This might not be needed as it undoes the move.  We are doing this is a funciton (pass by value) so it may should be a different board...???
                 if score > bestScore:
                     bestScore = score
