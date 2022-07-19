@@ -28,17 +28,24 @@ How to use this code:
 from displayBoard import *
 from winCondition import *
 from gameSetup import *
+
+# I don't think this is needed...from generalizedCheckWin import *
+from takeTurns import *
+from winConditionsMarks import *
+
+=======
 from generalizedCheckWin import *
 
 
+
 #Query user for the board dimensions
-board = queryBoard()
+#board = queryBoard()
 
 #Query user for the number needed to win
-ntWin = needWin(board)
+#ntWin = needWin(board)
 
 #Query user for who goes first
-playerFirst = queryPlayer()
+#playerFirst = queryPlayer()
 
 if queryPlayer():
     player = 'X'
@@ -53,13 +60,29 @@ else:
         compMove()
         playerMove()
 
+
+board = makeGrid(3,3)
+ntWin = 3
+playerFirst = True
+
     
 
 
 
+if playerFirst:
+    player = ' X '
+    bot = ' O '
+    while not winCondition(board, ntWin):
+        playerMove(board, player, bot, ntWin)
+        compMove(board, player, bot, ntWin)
+else:
+    player = ' O '
+    bot = ' X '
+    while not winCondition(board, ntWin):
+        compMove(board, player, bot, ntWin)
+        playerMove(board, player, bot, ntWin)
 
 
-#Do we need a function to count the number of turns?
 
 
 """

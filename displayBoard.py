@@ -111,18 +111,7 @@ def makeGrid(xgrid=5, ygrid=5):
     
         
     
-def makeMove(letter, xloc, yloc, gboard):
-    #take the move letter, the x and y location, and the current board state
-    
-    #get x, y location
-    x, y = (xloc,yloc)
-    
-    #update the board postion
-    #!!!!!THIS NEEDS A CHECK ON VALID LOCATIONS THAT HAVEN'T BEEN TAKEN
-    gboard[x][y] = ' ' + letter + ' '
-    
-    #return the updated board to check for wins and the next move
-    return gboard
+
     
 
 
