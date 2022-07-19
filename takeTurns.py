@@ -10,15 +10,23 @@ from winConditionsMarks import *
 from displayBoard import *
 import copy
 
-def makeMove(letter, xloc, yloc, gboard):
+def makeMove(letter, xloc, yloc, gboard, ntWin):
     #take the move letter, the x and y location, and the current board state
-    
+   
     #get x, y location
     x, y = (xloc,yloc)
     
-    #update the board postion
-    #!!!!!THIS NEEDS A CHECK ON VALID LOCATIONS THAT HAVEN'T BEEN TAKEN
+
+
     gboard[x][y] =  letter 
+    
+    #Check to see if the game ended
+    if winConditionMark(gboard, letter, ntWin):
+        showGrid(gboard)
+        sys.exit(mark+ " has won!")
+    if drawCondition(gboard):
+        showGrid(gboard)
+        sys.exit("This game is a draw!")
     
     #return the updated board to check for wins and the next move
     return gboard
@@ -46,7 +54,7 @@ def playerMove(board, player, bot, ntWin):
                     xloc = i
                     yloc = j
 
-    makeMove(player, xloc, yloc, board)
+    makeMove(player, xloc, yloc, board, ntWin)
     showGrid(board)
     return 
 
@@ -73,7 +81,7 @@ def compMove(board, player, bot, ntWin):
                     xloc = i
                     yloc = j
 
-    makeMove(bot, xloc, yloc, board)
+    makeMove(bot, xloc, yloc, board, ntWin)
     showGrid(board)
     return 
 
