@@ -345,7 +345,7 @@ def drawCondition(board):
         for j in range(len(board)):
             
             #Go through the board until you find a space you can move
-            if board[i][j] != 'X' and board[i][j] != 'O':
+            if board[i][j] != ' X ' and board[i][j] != ' O ':
                 return False
             
     #No more spaces to move

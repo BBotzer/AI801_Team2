@@ -35,24 +35,29 @@ from winConditionsMarks import *
 
 
 #Query user for the board dimensions
-board = queryBoard()
+#board = queryBoard()
 
 #Query user for the number needed to win
-ntWin = needWin(board)
+#ntWin = needWin(board)
 
 #Query user for who goes first
-playerFirst = queryPlayer()
+#playerFirst = queryPlayer()
+
+
+board = makeGrid(3,3)
+ntWin = 3
+playerFirst = True
 
 
 if playerFirst:
-    player = 'X'
-    bot = 'O'
+    player = ' X '
+    bot = ' O '
     while not winCondition(board, ntWin):
         playerMove(board, player, bot, ntWin)
         compMove(board, player, bot, ntWin)
 else:
-    player = 'O'
-    bot = 'X'
+    player = ' O '
+    bot = ' X '
     while not winCondition(board, ntWin):
         compMove(board, player, bot, ntWin)
         playerMove(board, player, bot, ntWin)
