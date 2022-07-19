@@ -2,7 +2,7 @@
 #checks wins based on players needing to completely fill the row, column or diagonal
 #if the board is 3x3 it checks for 3 in a row; if 5x5 it checks for 5 in a row
 #if we want to use different win requirements for different sized boards we will need different check win functions 
-    #NO I built a fully generalized winCondition() function nearly a month ago.
+
 # to change the math while using the len(board) function
 def checkWin(board):
 

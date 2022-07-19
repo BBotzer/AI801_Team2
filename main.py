@@ -28,9 +28,13 @@ How to use this code:
 from displayBoard import *
 from winCondition import *
 from gameSetup import *
+
 # I don't think this is needed...from generalizedCheckWin import *
 from takeTurns import *
 from winConditionsMarks import *
+
+=======
+from generalizedCheckWin import *
 
 
 
@@ -43,10 +47,26 @@ from winConditionsMarks import *
 #Query user for who goes first
 #playerFirst = queryPlayer()
 
+if queryPlayer():
+    player = 'X'
+    bot = 'O'
+    while not checkWin():
+        playerMove()
+        compMove()
+else:
+    player = 'O'
+    bot = 'X'
+    while not checkWin():
+        compMove()
+        playerMove()
+
 
 board = makeGrid(3,3)
 ntWin = 3
 playerFirst = True
+
+    
+
 
 
 if playerFirst:
