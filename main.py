@@ -28,7 +28,10 @@ How to use this code:
 from displayBoard import *
 from winCondition import *
 from gameSetup import *
-from takeTurns import *
+
+#Modify takeTurns based on what you are testing (abPruning or regular miniMax)
+from takeTurns_Beta import *
+
 from winConditionsMarks import *
 
 
@@ -48,14 +51,14 @@ from winConditionsMarks import *
 
 
 #force the game to run a 3x3 to test miniMax..
-board = makeGrid(3,3)
+board = makeGrid(5,5)
 ntWin = 3
 pchoice = True
 
 if pchoice == True: 
     player = ' X '
     bot = ' O '
-    while winCondition(board, ntWin) == False:
+    while winCondition(board, ntWin) == False:  #Fix exit game
         playerMove(board, player, bot, ntWin)
         compMove(board, player, bot, ntWin)
 else:

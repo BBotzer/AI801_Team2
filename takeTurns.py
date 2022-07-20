@@ -11,6 +11,11 @@ from displayBoard import *
 import copy
 import site
 
+
+
+
+
+
 def makeMove(letter, xloc, yloc, gboard, ntWin):
     #take the move letter, the x and y location, and the current board state
    
@@ -41,7 +46,7 @@ def makeMove(letter, xloc, yloc, gboard, ntWin):
 def playerMove(board, player, bot, ntWin):
     player = player
     bot = bot
-    bestScore = 1000
+    bestScore = -1000
 
     tempboard = copy.deepcopy(board)
     
@@ -54,7 +59,7 @@ def playerMove(board, player, bot, ntWin):
             if ((tempboard[i][j] != ' X ' and tempboard[i][j] != ' O ') or tempboard[i][j] == ''):
                 restoreVal = tempboard[i][j]
                 tempboard[i][j] = player
-                score = minimax(tempboard, 0, False, player, bot, ntWin)
+                score = minimax(tempboard, 0, True, player, bot, ntWin)
                 tempboard[i][j] = restoreVal  #This might not be needed as it undoes the move.  We are doing this is a funciton (pass by value) so it may should be a different board...???
                 if score < bestScore:
                     bestScore = score
@@ -69,7 +74,7 @@ def playerMove(board, player, bot, ntWin):
 def compMove(board, player, bot, ntWin):
     player = player
     bot = bot
-    bestScore = -1000
+    bestScore = 1000
 
     tempboard = copy.deepcopy(board)
 
@@ -82,7 +87,7 @@ def compMove(board, player, bot, ntWin):
             if ((tempboard[i][j] != ' X ' and tempboard[i][j] != ' O ') or tempboard[i][j] == ''):
                 restoreVal = tempboard[i][j]
                 tempboard[i][j] = bot
-                score = minimax(tempboard, 0, True, player, bot, ntWin)
+                score = minimax(tempboard, 0, False, player, bot, ntWin)
                 tempboard[i][j] = restoreVal  #This might not be needed as it undoes the move.  We are doing this is a funciton (pass by value) so it may should be a different board...???
                 if score > bestScore:
                     bestScore = score
@@ -112,28 +117,35 @@ def minimax(board, depth, isMaximizing, player, bot, ntWin):
     if isMaximizing:
         bestScore = -1000
 
-        for i in range(len(board)):
-            for j in range(len(board)):
-                if ((board[i][j] != ' X ' and board[i][j] != ' O ') or board[i][j] == ''):
-                    #resVal = board[i][j]
-                    board[i][j] = bot
+        tempboard = copy.deepcopy(board)
+
+        for i in range(len(tempboard)):
+            for j in range(len(tempboard)):
+                if ((tempboard[i][j] != ' X ' and tempboard[i][j] != ' O ') or tempboard[i][j] == ''):
+                    resVal = tempboard[i][j]
+                    tempboard[i][j] = bot
                     #There is an issue here when we pass miniMax the board (which is really the temp board).  It keeps cycling on the same location
-                    score = minimax(board, depth + 1, False, player, bot, ntWin)
-                    #board[i][j] = resVal
+                    score = minimax(tempboard, depth + 1, False, player, bot, ntWin)
+                    print("minimax Maximizing " + str(i) + ", " + str(j) + ": " + str(score))
+                    tempboard[i][j] = resVal
                     if (score > bestScore):
                         bestScore = score
         return bestScore
 
     else:
         bestScore = 1000
-        for i in range(len(board)):
-            for j in range(len(board)):
-                if ((board[i][j] != ' X ' and board[i][j] != ' O ') or board[i][j] == ''):
-                    resVal = board[i][j]
-                    board[i][j] = player
+        
+        tempboard = copy.deepcopy(board)
+        
+        for i in range(len(tempboard)):
+            for j in range(len(tempboard)):
+                if ((tempboard[i][j] != ' X ' and tempboard[i][j] != ' O ') or tempboard[i][j] == ''):
+                    resVal = tempboard[i][j]
+                    tempboard[i][j] = player
                     #There is an issue here when we pass miniMax the board (which is really the temp board).  It keeps cycling on the same location
-                    score = minimax(board, depth + 1, True, player, bot, ntWin)
-                    #board[i][j] = resVal
+                    score = minimax(tempboard, depth + 1, True, player, bot, ntWin)
+                    print("minimax Minimizing " + str(i) + ", " + str(j) + ": " + str(score))
+                    tempboard[i][j] = resVal
                     if (score < bestScore):
                         bestScore = score
         return bestScore
