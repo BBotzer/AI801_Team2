@@ -9,6 +9,7 @@ Created on Mon Jul 18 14:32:52 2022
 from winConditionsMarks import *
 from displayBoard import *
 import copy
+import site
 
 def makeMove(letter, xloc, yloc, gboard, ntWin):
     #take the move letter, the x and y location, and the current board state
@@ -16,17 +17,22 @@ def makeMove(letter, xloc, yloc, gboard, ntWin):
     #get x, y location
     x, y = (xloc,yloc)
     
-
-
-    gboard[x][y] =  letter 
+    #Check to see if game ended
+    if letter == ' X ':
+        check = ' O '
+    else:
+        check = ' X '
     
     #Check to see if the game ended
-    if winConditionMark(gboard, letter, ntWin):
+    if winConditionMark(gboard, check, ntWin):
         showGrid(gboard)
-        sys.exit(mark+ " has won!")
+        return False
     if drawCondition(gboard):
         showGrid(gboard)
-        sys.exit("This game is a draw!")
+        return False
+
+    gboard[x][y] =  letter 
+
     
     #return the updated board to check for wins and the next move
     return gboard
@@ -46,9 +52,10 @@ def playerMove(board, player, bot, ntWin):
         for j in range(len(tempboard)):
             
             if ((tempboard[i][j] != ' X ' and tempboard[i][j] != ' O ') or tempboard[i][j] == ''):
+                restoreVal = tempboard[i][j]
                 tempboard[i][j] = player
                 score = minimax(tempboard, 0, False, player, bot, ntWin)
-                #board[i][j] = ' '  #This might not be needed as it undoes the move.  We are doing this is a funciton (pass by value) so it may should be a different board...???
+                tempboard[i][j] = restoreVal  #This might not be needed as it undoes the move.  We are doing this is a funciton (pass by value) so it may should be a different board...???
                 if score < bestScore:
                     bestScore = score
                     xloc = i
@@ -73,9 +80,10 @@ def compMove(board, player, bot, ntWin):
         for j in range(len(tempboard)):
             
             if ((tempboard[i][j] != ' X ' and tempboard[i][j] != ' O ') or tempboard[i][j] == ''):
+                restoreVal = tempboard[i][j]
                 tempboard[i][j] = bot
                 score = minimax(tempboard, 0, True, player, bot, ntWin)
-                #board[i][j] = ' '  #This might not be needed as it undoes the move.  We are doing this is a funciton (pass by value) so it may should be a different board...???
+                tempboard[i][j] = restoreVal  #This might not be needed as it undoes the move.  We are doing this is a funciton (pass by value) so it may should be a different board...???
                 if score > bestScore:
                     bestScore = score
                     xloc = i
@@ -85,7 +93,7 @@ def compMove(board, player, bot, ntWin):
     showGrid(board)
     return 
 
-
+#Junk test minimax (delete)
 def minimaxz(board, depth, isMaximizing, player, bot, ntWin):
     return 1
 
@@ -106,11 +114,12 @@ def minimax(board, depth, isMaximizing, player, bot, ntWin):
 
         for i in range(len(board)):
             for j in range(len(board)):
-                if ((board[i][j] != ' X ' and board[i][j] != ' O ') or board[i][j] == ''): 
+                if ((board[i][j] != ' X ' and board[i][j] != ' O ') or board[i][j] == ''):
+                    #resVal = board[i][j]
                     board[i][j] = bot
                     #There is an issue here when we pass miniMax the board (which is really the temp board).  It keeps cycling on the same location
                     score = minimax(board, depth + 1, False, player, bot, ntWin)
-                    #board[i][j] = ' '
+                    #board[i][j] = resVal
                     if (score > bestScore):
                         bestScore = score
         return bestScore
@@ -120,10 +129,11 @@ def minimax(board, depth, isMaximizing, player, bot, ntWin):
         for i in range(len(board)):
             for j in range(len(board)):
                 if ((board[i][j] != ' X ' and board[i][j] != ' O ') or board[i][j] == ''):
+                    resVal = board[i][j]
                     board[i][j] = player
                     #There is an issue here when we pass miniMax the board (which is really the temp board).  It keeps cycling on the same location
                     score = minimax(board, depth + 1, True, player, bot, ntWin)
-                    #board[i][j] = ' '
+                    #board[i][j] = resVal
                     if (score < bestScore):
                         bestScore = score
         return bestScore

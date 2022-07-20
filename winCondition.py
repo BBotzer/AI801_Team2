@@ -342,6 +342,7 @@ def winCondition(board, ntwin = 4):
      #or... I can run this as three cycles... On searches for rows, one for columns, one for diags#
      
     if winRows(board, ntwin) == True or winCols(board, ntwin) == True or winDiag(board, ntwin) == True:
+        showGrid(board)
         return True
     else:
         return False

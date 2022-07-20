@@ -28,6 +28,8 @@ How to use this code:
 from displayBoard import *
 from winCondition import *
 from gameSetup import *
+from takeTurns import *
+from winConditionsMarks import *
 
 
 
@@ -43,18 +45,25 @@ from gameSetup import *
 
 #I made up the winConditions method, but it would be easier to run this loop
 #if we combine all the win condition methods into one so only one method needs to be false here.
+
+
+#force the game to run a 3x3 to test miniMax..
+board = makeGrid(3,3)
+ntWin = 3
+pchoice = True
+
 if pchoice == True: 
-    player = 'X'
-    bot = 'O'
-    while winConditions == False:
-        playerMove(player)
-        aiMove(bot)
+    player = ' X '
+    bot = ' O '
+    while winCondition(board, ntWin) == False:
+        playerMove(board, player, bot, ntWin)
+        compMove(board, player, bot, ntWin)
 else:
-    player = 'O'
-    bot = 'X'
-    while winConditions == False:
-        aiMove(bot)
-        playerMove(player)   
+    player = ' O '
+    bot = ' X '
+    while winCondition(board, ntWin) == False:
+       compMove(board, player, bot, ntWin)
+       playerMove(board, player, bot, ntWin) 
 
 
 if playerFirst:

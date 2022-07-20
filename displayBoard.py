@@ -111,32 +111,11 @@ def makeGrid(xgrid=5, ygrid=5):
 
 #Checks if the space was taken or free for a move. Returns True or False   
 def spaceIsFree(gboard, x, y):
-    if(gboard[x][y]== 'X' or 'O'):
+    if(gboard[x][y]== ' X ' or ' O '):
         return False
     else:
         return True
 
-
-def aiMove():
-    #Minimax to make move
-    
-    return
-
-
-#We need a getter method to get these values so we can call it from main.
-def playerMove(letter, xloc, yloc, gboard):
-    #take the move letter, the x and y location, and the current board state
-    
-    #get x, y location
-    x, y = (xloc,yloc)
-    
-    #update the board postion
-    #!!!!!THIS NEEDS A CHECK ON VALID LOCATIONS THAT HAVEN'T BEEN TAKEN
-    gboard[x][y] = ' ' + letter + ' '
-    
-    #return the updated board to check for wins and the next move
-    return gboard
-    
 
 
 
