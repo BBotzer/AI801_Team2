@@ -103,6 +103,8 @@ def minimaxz(board, depth, isMaximizing, player, bot, ntWin):
 
 
 def minimax(board, depth, isMaximizing, player, bot, ntWin):
+    alpha = -2
+    beta = 2
 
     if winConditionMark(board, player, ntWin):
         return 1
@@ -114,7 +116,7 @@ def minimax(board, depth, isMaximizing, player, bot, ntWin):
         return 0
 
     if isMaximizing:
-        bestScore = -1000
+        bestScore = -2
 
         for i in range(len(board)):
             for j in range(len(board)):
@@ -126,10 +128,16 @@ def minimax(board, depth, isMaximizing, player, bot, ntWin):
                     board[i][j] = resVal
                     if (score > bestScore):
                         bestScore = score
+                    if bestScore >= beta:
+                        return bestScore
+                    if bestScore > alpha:
+                        alpha = bestScore
+
+
         return bestScore
 
     else:
-        bestScore = 1000
+        bestScore = 2
         for i in range(len(board)):
             for j in range(len(board)):
                 if ((board[i][j] != ' X ' and board[i][j] != ' O ') or board[i][j] == ''):
@@ -140,4 +148,9 @@ def minimax(board, depth, isMaximizing, player, bot, ntWin):
                     board[i][j] = resVal
                     if (score < bestScore):
                         bestScore = score
+                    if bestScore <= alpha:
+                        return bestScore
+                    if bestScore < beta:
+                        beta = bestScore
+
         return bestScore
