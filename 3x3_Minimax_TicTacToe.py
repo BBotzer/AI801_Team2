@@ -101,12 +101,12 @@ def insertLetter(letter, position):
 player = 'O'
 bot = 'X'
 
-def playerMovejunk():
+def playerMove3():
     position = int(input("Enter the position for 'O': "))
     insertLetter(player, position)
     return
 
-def compMovejunk():
+def compMove3():
     bestScore = -800
     bestMove = 0
 
@@ -158,7 +158,7 @@ def minimax(board, depth, isMaximizing):
         return bestScore
 
 while not checkWin():
-    compMovejunk()
-    playerMovejunk()
+    compMove3()
+    playerMove3()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
