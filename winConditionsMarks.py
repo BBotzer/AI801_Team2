@@ -43,6 +43,8 @@ def winRowsMark(board, mark, ntWin=4):
                 
                 if count == (ntWin -1) and board[r][j] == mark:
                     return True
+            else:
+                count = 0
             #check condition to prevent excessive iteration through the board
             #Will stop when it is not possible to win a column
             if (brdSize - j) <= (ntWin - count):
@@ -85,6 +87,8 @@ def winColsMark(board, mark, ntWin=4):
                 
                 if count == (ntWin -1) and board[j][c] == mark:
                     return True
+            else:
+                count = 0
             #check condition to prevent excessive iteration through the board
             #Will stop when it is not possible to win a column
             if (brdSize - j) <= (ntWin - count):
@@ -138,6 +142,8 @@ def winDiagMark(board, mark, ntWin=4):
                 
                 if count == (ntWin -1) and board[r+j][r+j] == mark:
                     return True
+            else:
+                count = 0
                 
             j += 1
                      
@@ -162,6 +168,8 @@ def winDiagMark(board, mark, ntWin=4):
                 
                 if count == (ntWin -1) and board[brdEnd-r-j][r+j] == mark:
                     return True
+            else:
+                count = 0
                 
             j += 1
 
@@ -200,6 +208,8 @@ def winDiagMark(board, mark, ntWin=4):
                     if count == (ntWin -1) and board[r+j][r+j+mD] == mark:
                         #print("Win along the minor upper forward diagonal: " + str(board[r][r]) + ', ' + str(board[r+3][r+3]))
                         return True
+                else:
+                    count = 0
                     
                 j += 1
     
@@ -233,6 +243,8 @@ def winDiagMark(board, mark, ntWin=4):
                     if count == (ntWin -1) and board[r+j+mD][r+j] == mark:
                         #print("Win along the minor upper forward diagonal: " + str(board[r][r]) + ', ' + str(board[r+3][r+3]))
                         return True
+                else:
+                    count = 0
                     
                 j += 1
     
@@ -270,6 +282,8 @@ def winDiagMark(board, mark, ntWin=4):
                     if count == (ntWin -1) and board[brdEnd-r-j-mD][r+j] == mark:
                         #print("Win along the minor upper forward diagonal: " + str(board[r][r]) + ', ' + str(board[r+3][r+3]))
                         return True
+                else:
+                    count = 0
                     
                 j += 1
 
@@ -304,6 +318,8 @@ def winDiagMark(board, mark, ntWin=4):
                     if count == (ntWin -1) and board[brdEnd-r-j][r+j+mD] == mark:
                         #print("Win along the minor upper forward diagonal: " + str(board[r][r]) + ', ' + str(board[r+3][r+3]))
                         return True
+                else:
+                    count = 0
                     
                 j += 1
 

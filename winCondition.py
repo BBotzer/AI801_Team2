@@ -42,6 +42,8 @@ def winRows(board, ntWin=4):
                 if count == (ntWin -1):
                     print("Row win in Row: " + str(r))
                     return True
+            else:
+                count = 0
             #check condition to prevent excessive iteration through the board
             #Will stop when it is not possible to win a column
             if (brdSize - j) <= (ntWin - count):
@@ -85,6 +87,8 @@ def winCols(board,  ntWin=4):
                 if count == (ntWin -1):
                     print("Column win in Col: " + str(c))
                     return True
+            else:
+                count = 0
             #check condition to prevent excessive iteration through the board
             #Will stop when it is not possible to win a column
             if (brdSize - j) <= (ntWin - count):
@@ -139,6 +143,8 @@ def winDiag(board, ntWin=4):
                 if count == (ntWin -1):
                     print("Win along the main forward diagonal starting in: " + str(r) + ', ' + str(r))
                     return True
+            else:
+                count = 0
                 
             j += 1
                      
@@ -164,6 +170,8 @@ def winDiag(board, ntWin=4):
                 if count == (ntWin -1):
                     print("Win along the main backward diagonal starting in: " + str(brdEnd-r) + ', ' + str(r))
                     return True
+            else:
+                count = 0
                 
             j += 1
 
@@ -203,6 +211,8 @@ def winDiag(board, ntWin=4):
                         #print("Win along the minor upper forward diagonal: " + str(board[r][r]) + ', ' + str(board[r+3][r+3]))
                         print("Win from a minor upper foward diagonal starting in " + str(r) + ", " + str(r+mD))
                         return True
+                else:
+                    count = 0
                     
                 j += 1
     
@@ -237,6 +247,8 @@ def winDiag(board, ntWin=4):
                         #print("Win along the minor upper forward diagonal: " + str(board[r][r]) + ', ' + str(board[r+3][r+3]))
                         print("Win from a minor lower foward diagonal starting in " + str(r) + ", " + str(r+mD))
                         return True
+                else:
+                    count = 0
                     
                 j += 1
     
@@ -275,6 +287,8 @@ def winDiag(board, ntWin=4):
                         #print("Win along the minor upper forward diagonal: " + str(board[r][r]) + ', ' + str(board[r+3][r+3]))
                         print("Win from a minor upper backward diagonal starting in " + str(brdEnd-r-mD) + ", " + str(r))
                         return True
+                    else:
+                        count = 0
                     
                 j += 1
 
@@ -310,6 +324,8 @@ def winDiag(board, ntWin=4):
                         #print("Win along the minor upper forward diagonal: " + str(board[r][r]) + ', ' + str(board[r+3][r+3]))
                         print("Win from a minor lower backward diagonal starting in " + str(brdEnd-r) + ", " + str(r+mD))
                         return True
+                    else:
+                        count = 0
                     
                 j += 1
 

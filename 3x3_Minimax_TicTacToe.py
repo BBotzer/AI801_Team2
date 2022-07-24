@@ -123,7 +123,7 @@ def compMove3():
     return
 
 
-def minimax(board, depth, isMaximizing):
+def minimax(board, depth, isMaximizing, alpha = -800, beta = 800):
 
     if checkWhichMarkWon(bot):
         return 1
@@ -144,6 +144,9 @@ def minimax(board, depth, isMaximizing):
                 board[key] = ' '
                 if (score > bestScore):
                     bestScore = score
+                alpha = max(bestScore, alpha)
+                if alpha >= beta:
+                    return bestScore
         return bestScore
 
     else:
@@ -155,6 +158,9 @@ def minimax(board, depth, isMaximizing):
                 board[key] = ' '
                 if (score < bestScore):
                     bestScore = score
+                beta = min(bestScore, beta)
+                if alpha >= beta:
+                    return bestScore
         return bestScore
 
 while not checkWin():

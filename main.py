@@ -30,7 +30,7 @@ from winCondition import *
 from gameSetup import *
 
 #Modify takeTurns based on what you are testing (abPruning or regular miniMax)
-from takeTurns_Beta import *
+from takeTurns_abPruning import *
 
 from winConditionsMarks import *
 
@@ -51,8 +51,8 @@ from winConditionsMarks import *
 
 
 #force the game to run a 3x3 to test miniMax..
-board = makeGrid(5,5)
-ntWin = 3
+board = makeGrid(7,7)
+ntWin = 5
 pchoice = True
 
 if pchoice == True: 
@@ -69,6 +69,7 @@ else:
        playerMove(board, player, bot, ntWin) 
 
 
+"""
 if playerFirst:
     player = ' X '
     bot = ' O '
@@ -82,7 +83,7 @@ else:
         compMove(board, player, bot, ntWin)
         playerMove(board, player, bot, ntWin)
 
-
+"""
 
 
 """

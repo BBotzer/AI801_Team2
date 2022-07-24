@@ -43,104 +43,80 @@ def checkDraw():
 
 def checkWin():
     #Top row
-    if (board[1] == board[2] and board[1] == board[3] and board[1] == board[4] and 
-        board[1] == board[5] and board[1] != ' '):
+    if (board[1] == board[2] and board[1] == board[3] and board[1] == board[4] and board[1] == board[5] and board[1] != ' '):
         return True
     #Second row
-    elif (board[6] == board[7] and board[6] == board[8] and board[6] == board[9] and 
-        board[6] == board[10] and board[4] != ' '):
+    elif (board[6] == board[7] and board[6] == board[8] and board[6] == board[9] and board[6] == board[10] and board[6] != ' '):
         return True
     #Third row
-    elif (board[10] == board[11] and board[12] == board[13] and board[12] == board[14] and 
-        board[12] == board[15] and board[10] != ' '):
+    elif (board[10] == board[11] and board[12] == board[13] and board[12] == board[14] and board[12] == board[15] and board[10] != ' '):
         return True
     #Fourth row
-    elif (board[16] == board[17] and board[16] == board[18] and board[16] == board[19] and 
-        board[16] == board[20] and board[16] != ' '):
+    elif (board[16] == board[17] and board[16] == board[18] and board[16] == board[19] and board[16] == board[20] and board[16] != ' '):
         return True
     #Bottom row
-    elif (board[21] == board[22] and board[21] == board[23] and board[21] == board[24] and 
-        board[21] == board[25] and board[21] != ' '):
+    elif (board[21] == board[22] and board[21] == board[23] and board[21] == board[24] and board[21] == board[25] and board[21] != ' '):
         return True
     #Top left to Bottom right diagonal
-    elif (board[1] == board[7] and board[1] == board[13] and board[1] == board[19] and 
-        board[1] == board[25] and board[1] != ' '):
+    elif (board[1] == board[7] and board[1] == board[13] and board[1] == board[19] and board[1] == board[25] and board[1] != ' '):
         return True
     #Top right to Bottom left diagonal
-    elif (board[5] == board[9] and board[5] == board[13] and board[5] == board[17] and 
-        board[5] == board[21] and board[5] != ' '):
+    elif (board[5] == board[9] and board[5] == board[13] and board[5] == board[17] and board[5] == board[21] and board[5] != ' '):
         return True
     #Left column
-    elif (board[1] == board[6] and board[1] == board[11] and board[1] == board[16] and 
-        board[1] == board[21] and board[1] != ' '):
+    elif (board[1] == board[6] and board[1] == board[11] and board[1] == board[16] and board[1] == board[21] and board[1] != ' '):
         return True
     #Second column
-    elif (board[2] == board[7] and board[2] == board[12] and board[2] == board[17] and 
-        board[2] == board[22] and board[2] != ' '):
+    elif (board[2] == board[7] and board[2] == board[12] and board[2] == board[17] and board[2] == board[22] and board[2] != ' '):
         return True
     #Third column
-    elif (board[3] == board[8] and board[3] == board[13] and board[3] == board[18] and 
-        board[3] == board[23] and board[3] != ' '):
+    elif (board[3] == board[8] and board[3] == board[13] and board[3] == board[18] and board[3] == board[23] and board[3] != ' '):
         return True
     #Fourth column
-    elif (board[4] == board[9] and board[4] == board[14] and board[4] == board[19] and 
-        board[4] == board[24] and board[4] != ' '):
+    elif (board[4] == board[9] and board[4] == board[14] and board[4] == board[19] and board[4] == board[24] and board[4] != ' '):
         return True
     #Right column
-    elif (board[5] == board[10] and board[5] == board[15] and board[5] == board[20] and 
-        board[5] == board[25] and board[5] != ' '):
+    elif (board[5] == board[10] and board[5] == board[15] and board[5] == board[20] and board[5] == board[25] and board[5] != ' '):
         return True
     else:
         return False
 
 def checkWhichMarkWon(mark):
     #Top row
-    if (board[1] == board[2] and board[1] == board[3] and board[1] == board[4] and 
-        board[1] == board[5] and board[1] == mark):
+    if (board[1] == board[2] and board[1] == board[3] and board[1] == board[4] and board[1] == board[5] and board[1] == mark):
         return True
     #Second row
-    elif (board[6] == board[7] and board[6] == board[8] and board[6] == board[9] and 
-        board[6] == board[10] and board[4] == mark):
+    elif (board[6] == board[7] and board[6] == board[8] and board[6] == board[9] and board[6] == board[10] and board[4] == mark):
         return True
     #Third row
-    elif (board[10] == board[11] and board[12] == board[13] and board[12] == board[14] and 
-        board[12] == board[15] and board[10] == mark):
+    elif (board[10] == board[11] and board[12] == board[13] and board[12] == board[14] and board[12] == board[15] and board[10] == mark):
         return True
     #Fourth row
-    elif (board[16] == board[17] and board[16] == board[18] and board[16] == board[19] and 
-        board[16] == board[20] and board[16] == mark):
+    elif (board[16] == board[17] and board[16] == board[18] and board[16] == board[19] and board[16] == board[20] and board[16] == mark):
         return True
     #Bottom row
-    elif (board[21] == board[22] and board[21] == board[23] and board[21] == board[24] and 
-        board[21] == board[25] and board[21] == mark):
+    elif (board[21] == board[22] and board[21] == board[23] and board[21] == board[24] and board[21] == board[25] and board[21] == mark):
         return True
     #Top left to Bottom right diagonal
-    elif (board[1] == board[7] and board[1] == board[13] and board[1] == board[19] and 
-        board[1] == board[25] and board[1] == mark):
+    elif (board[1] == board[7] and board[1] == board[13] and board[1] == board[19] and board[1] == board[25] and board[1] == mark):
         return True
     #Top right to Bottom left diagonal
-    elif (board[5] == board[9] and board[5] == board[13] and board[5] == board[17] and 
-        board[5] == board[21] and board[5] == mark):
+    elif (board[5] == board[9] and board[5] == board[13] and board[5] == board[17] and board[5] == board[21] and board[5] == mark):
         return True
     #Left column
-    elif (board[1] == board[6] and board[1] == board[11] and board[1] == board[16] and 
-        board[1] == board[21] and board[1] == mark):
+    elif (board[1] == board[6] and board[1] == board[11] and board[1] == board[16] and board[1] == board[21] and board[1] == mark):
         return True
     #Second column
-    elif (board[2] == board[7] and board[2] == board[12] and board[2] == board[17] and 
-        board[2] == board[22] and board[2] == mark):
+    elif (board[2] == board[7] and board[2] == board[12] and board[2] == board[17] and board[2] == board[22] and board[2] == mark):
         return True
     #Third column
-    elif (board[3] == board[8] and board[3] == board[13] and board[3] == board[18] and 
-        board[3] == board[23] and board[3] == mark):
+    elif (board[3] == board[8] and board[3] == board[13] and board[3] == board[18] and board[3] == board[23] and board[3] == mark):
         return True
     #Fourth column
-    elif (board[4] == board[9] and board[4] == board[14] and board[4] == board[19] and 
-        board[4] == board[24] and board[4] == mark):
+    elif (board[4] == board[9] and board[4] == board[14] and board[4] == board[19] and board[4] == board[24] and board[4] == mark):
         return True
     #Right column
-    elif (board[5] == board[10] and board[5] == board[15] and board[5] == board[20] and 
-        board[5] == board[25] and board[5] == mark):
+    elif (board[5] == board[10] and board[5] == board[15] and board[5] == board[20] and board[5] == board[25] and board[5] == mark):
         return True
     else:
         return False
@@ -194,7 +170,7 @@ def compMove5():
     return
 
 
-def minimax(board, depth, isMaximizing):
+def minimax(board, depth, isMaximizing, alpha = -800, beta = 800):
 
     if checkWhichMarkWon(bot):
         return 1
@@ -206,7 +182,7 @@ def minimax(board, depth, isMaximizing):
         return 0
 
     if isMaximizing:
-        bestScore = -800
+        bestScore = 800
 
         for key in board.keys():
             if board[key] == ' ':
@@ -215,10 +191,13 @@ def minimax(board, depth, isMaximizing):
                 board[key] = ' '
                 if (score > bestScore):
                     bestScore = score
+                alpha = max(bestScore, alpha)
+                if alpha >= beta:
+                    return bestScore
         return bestScore
 
     else:
-        bestScore = 800
+        bestScore = -800
         for key in board.keys():
             if board[key] == ' ':
                 board[key] = player
@@ -226,6 +205,9 @@ def minimax(board, depth, isMaximizing):
                 board[key] = ' '
                 if (score < bestScore):
                     bestScore = score
+                beta = min(bestScore, beta)
+                if alpha >= beta:
+                    return bestScore
         return bestScore
 
 while not checkWin():
