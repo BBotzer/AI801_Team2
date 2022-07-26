@@ -51,14 +51,28 @@ from winConditionsMarks import *
 
 
 #force the game to run a 3x3 to test miniMax..
-board = makeGrid(7,7)
-ntWin = 5
+board = makeGrid(3,3)
+ntWin = 3
 pchoice = True
+
+
+#testing single loop
+
+        
+#for i, j in ((ti, tj) for ti in range(len(board)) for tj in range(len(board))):
+#    print(str(i) +", " +  str(j))
+#    if j == 2:
+#        break
+    
+#print("I am freeee")
+
+
+
 
 if pchoice == True: 
     player = ' X '
     bot = ' O '
-    while winCondition(board, ntWin) == False:  #Fix exit game
+    while winCondition(board, ntWin) == False and drawCondition(board) == False:  #Fix exit game
         playerMove(board, player, bot, ntWin)
         compMove(board, player, bot, ntWin)
 else:
