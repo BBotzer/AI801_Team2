@@ -56,8 +56,8 @@ def makeMove(letter, xloc, yloc, gboard, ntWin):
 def playerMove(board, player, bot, ntWin):
     player = player
     bot = bot
-    bestScore = -1000
-
+    bestMax = -1000
+    minimax.counter = 0
 
     
     xloc = 0
@@ -69,23 +69,24 @@ def playerMove(board, player, bot, ntWin):
             if ((board[i][j] != ' X ' and board[i][j] != ' O ') or board[i][j] == ''):
                 restoreVal = board[i][j]
                 board[i][j] = player
-                score = minimax(board, 0, False, player, bot, ntWin, alpha = 1000, beta = -1000)
+                score = minimax(board, 0, False, player, bot, ntWin, alpha = -1000, beta = 1000)
                 board[i][j] = restoreVal  #This might not be needed as it undoes the move.  We are doing this is a funciton (pass by value) so it may should be a different board...???
-                if score > bestScore:
-                    bestScore = score
+                if score > bestMax:
+                    bestMax = score
                     xloc = i
                     yloc = j
 
     makeMove(player, xloc, yloc, board, ntWin)
     showGrid(board)
+    print(minimax.counter)
     return 
 
 
 def compMove(board, player, bot, ntWin):
     player = player
     bot = bot
-    bestScore = 1000
-
+    bestMin = 1000
+    minimax.counter = 0
 
 
     xloc = 0
@@ -97,15 +98,16 @@ def compMove(board, player, bot, ntWin):
             if ((board[i][j] != ' X ' and board[i][j] != ' O ') or board[i][j] == ''):
                 restoreVal = board[i][j]
                 board[i][j] = bot
-                score = minimax(board, 0, True, player, bot, ntWin, alpha = 1000, beta = -1000)
+                score = minimax(board, 0, True, player, bot, ntWin, alpha = -1000, beta = 1000)
                 board[i][j] = restoreVal  #This might not be needed as it undoes the move.  We are doing this is a funciton (pass by value) so it may should be a different board...???
-                if score < bestScore:
-                    bestScore = score
+                if score < bestMin:
+                    bestMin = score
                     xloc = i
                     yloc = j
 
     makeMove(bot, xloc, yloc, board, ntWin)
     showGrid(board)
+    print(minimax.counter)
     return 
 
 #Junk test minimax (delete)
@@ -113,19 +115,27 @@ def minimaxz(board, depth, isMaximizing, player, bot, ntWin):
     return 1
 
 
-def minimax(board, depth, isMaximizing, player, bot, ntWin, alpha, beta):
+def callCount():
+    
+    count = count + 1
+    
 
+
+def minimax(board, depth, isMaximizing, player, bot, ntWin, alpha, beta):
+    
+    minimax.counter += 1
+    
     if winConditionMark(board, player, ntWin):
-        return 1
+        return ((len(board)**2) - depth)
 
     elif winConditionMark(board, bot, ntWin):
-        return -1
+        return (depth - (len(board)**2))
 
     elif drawCondition(board):
         return 0
 
     if isMaximizing:
-        bestScore = -1000
+        bestMax = -1000
 
         #Cool use of generator expression to generate double loop as single loop for break statement
         for i, j in ((ti, tj) for ti in range(len(board)) for tj in range(len(board))):
@@ -135,16 +145,16 @@ def minimax(board, depth, isMaximizing, player, bot, ntWin, alpha, beta):
                 #There is an issue here when we pass miniMax the board (which is really the temp board).  It keeps cycling on the same location
                 score = minimax(board, depth + 1, False, player, bot, ntWin, alpha, beta)
                 board[i][j] = resVal
-                if (score > bestScore):
-                    bestScore = score
-                alpha = max(bestScore, alpha)
+                if (score > bestMax):
+                    bestMax = score
+                alpha = max(bestMax, alpha)
             if alpha >= beta:
                 break
             
-        return bestScore
+        return bestMax
 
     else:
-        bestScore = 1000
+        bestMin = 1000
         for i, j in ((ti, tj) for ti in range(len(board)) for tj in range(len(board))):
             if ((board[i][j] != ' X ' and board[i][j] != ' O ') or board[i][j] == ''):
                 resVal = board[i][j]
@@ -152,10 +162,11 @@ def minimax(board, depth, isMaximizing, player, bot, ntWin, alpha, beta):
                 #There is an issue here when we pass miniMax the board (which is really the temp board).  It keeps cycling on the same location
                 score = minimax(board, depth + 1, True, player, bot, ntWin, alpha, beta)
                 board[i][j] = resVal
-                if (score < bestScore):
-                    bestScore = score
-                beta = min(bestScore, beta)
+                if (score < bestMin):
+                    bestMin = score
+                beta = min(bestMin, beta)
             if alpha >= beta:
                 break
             
-        return bestScore
+        return bestMin
+    

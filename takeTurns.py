@@ -115,6 +115,8 @@ def minimaxz(board, depth, isMaximizing, player, bot, ntWin):
 
 def minimax(board, depth, isMaximizing, player, bot, ntWin):
 
+    minimax.counter += 1
+    
     if winConditionMark(board, player, ntWin):
         return 1
 
@@ -157,3 +159,5 @@ def minimax(board, depth, isMaximizing, player, bot, ntWin):
                         bestScore = score
                     
         return bestScore
+    
+minimax.counter = 0

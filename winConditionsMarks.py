@@ -365,7 +365,7 @@ def drawCondition(board):
                 return False
             
     #No more spaces to move
-    print("We have a draw.")
+    
     return True
  
             
