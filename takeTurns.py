@@ -24,8 +24,8 @@ def makeMove(letter, xloc, yloc, gboard, ntWin):
     #get x, y location
     x, y = (xloc,yloc)
     
-    if spaceIsFree(gboard,x,y) == True:
-        print("That space is taken.  Try again.\n")
+    if spaceIsFree(gboard,x,y) == False:
+        #print("That space is taken.  Try again.\n")
         return
     else:
         
