@@ -30,7 +30,7 @@ from winCondition import *
 from gameSetup import *
 
 #Modify takeTurns based on what you are testing (abPruning or regular miniMax)
-from takeTurns_abOptimize import *
+from takeTurns_ab_dls import *
 
 from winConditionsMarks import *
 
@@ -51,8 +51,8 @@ from winConditionsMarks import *
 
 
 #force the game to run a 3x3 to test miniMax..
-board = makeGrid(3,3)
-ntWin = 3
+board = makeGrid(5,5)
+ntWin = 5
 pchoice = True
 
 

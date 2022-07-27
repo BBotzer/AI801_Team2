@@ -354,6 +354,7 @@ def winCondition(board, ntwin = 4):
 
     """
         
+    winCondition.count += 1
      #need to try: exception for index out of range
      #or... I can run this as three cycles... On searches for rows, one for columns, one for diags#
      
@@ -365,7 +366,7 @@ def winCondition(board, ntwin = 4):
     
         
             
-    
+winCondition.count = 0
     
                 
             

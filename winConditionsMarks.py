@@ -347,7 +347,7 @@ def winConditionMark(board, mark, ntwin = 4):
     False on no Wins
 
     """
-        
+    winConditionMark.count += 1
      
     if winRowsMark(board, mark, ntwin) == True or winColsMark(board, mark, ntwin) == True or winDiagMark(board, mark, ntwin) == True:
         return True
@@ -370,5 +370,5 @@ def drawCondition(board):
  
             
     
-    
+winConditionMark.count = 0
  

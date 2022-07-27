@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 """
+Created on Wed Jul 27 07:01:12 2022
+
+@author: btb51
+"""
+
+# -*- coding: utf-8 -*-
+"""
 Created on Wed Jul 20 19:56:55 2022
 
 @author: btb51
@@ -12,7 +19,7 @@ Created on Mon Jul 18 14:32:52 2022
 
 
 #THis is this alpha-beta pruning test
-
+from fastWinConMark import *
 from winConditionsMarks import *
 from displayBoard import *
 import copy
@@ -38,7 +45,7 @@ def makeMove(letter, xloc, yloc, gboard, ntWin):
             check = ' X '
         
         #Check to see if the game ended
-        if winConditionMark(gboard, check, ntWin):
+        if fastWinCon3Mark(gboard, check):
             showGrid(gboard)
             return False
         if drawCondition(gboard):
@@ -89,7 +96,7 @@ def playerMove(board, player, bot, ntWin):
 
 
 def compMove(board, player, bot, ntWin):
-   
+    
     start = time.perf_counter()
     
     player = player
@@ -132,18 +139,25 @@ def callCount():
     
 
 
+
+
+
 def minimax(board, depth, isMaximizing, player, bot, ntWin, alpha, beta):
     
     minimax.counter += 1
     
-    if winConditionMark(board, player, ntWin):
+    if fastWinCon5Mark(board, player):
         return ((len(board)**2) - depth)
 
-    elif winConditionMark(board, bot, ntWin):
+    elif fastWinCon5Mark(board, bot):
         return (depth - (len(board)**2))
 
     elif drawCondition(board):
         return 0
+    
+    else:
+        if depth > 2:
+            return heuristic5(board)
 
     if isMaximizing:
         bestMax = -1000
