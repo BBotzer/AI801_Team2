@@ -30,7 +30,7 @@ from winCondition import *
 from gameSetup import *
 
 #Modify takeTurns based on what you are testing (abPruning or regular miniMax)
-from takeTurns_abPruning import *
+from takeTurns_abOptimize import *
 
 from winConditionsMarks import *
 
