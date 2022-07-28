@@ -45,11 +45,12 @@ def makeMove(letter, xloc, yloc, gboard, ntWin):
             check = ' X '
         
         #Check to see if the game ended
-        if fastWinCon3Mark(gboard, check):
+        if fastWinCon5Mark(gboard, check):
             showGrid(gboard)
             return False
         if drawCondition(gboard):
             showGrid(gboard)
+            print("this is a draw and I don't want to play")
             return False
     
     
