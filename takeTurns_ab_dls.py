@@ -61,6 +61,103 @@ def makeMove(letter, xloc, yloc, gboard, ntWin):
         return gboard
 
 
+def playerForcedMoves(board, player, bot, ntWin):
+    #Check to see if there is an easy win in the next move
+    #Cycle through the spaces
+    for i, j in ((ti, tj) for ti in range(len(board)) for tj in range(len(board))):
+        
+        #Check if space is free
+        
+        if spaceIsFree(board, i, j):
+        
+            #keep the restore value
+            restoreVal = board[i][j]
+            #make a possible winning move
+            board[i][j] = player
+            #check to see if the move has won
+            if winConditionMark(board, player, ntWin):
+                #You won
+                showGrid(board)
+                print("Calls to miniMax: " + str(minimax.counter))
+                return True
+            #You didn't win, restore the old value
+            else:
+                board[i][j] = restoreVal
+            
+
+    #Check to see if there is a block that you must make to keep the opponent from winning
+    #Cycle through the spaces
+    for i, j in ((ti, tj) for ti in range(len(board)) for tj in range(len(board))):
+        
+        #Check if space is free
+        
+        if spaceIsFree(board, i, j):
+            
+            #keep the restore value
+            restoreVal = board[i][j]
+            #Move the computer into that spot (a turn ahead)
+            board[i][j] = bot
+            #Check to see if that caused the computer to win
+            if winConditionMark(board, bot, ntWin):
+                #The computer will win if it goes there, take the spot from them
+                board[i][j] = player
+                showGrid(board)
+                print("Calls to miniMax: " + str(minimax.counter))
+                return True
+            #The computer won't win there, you can leave it for now
+            else:
+                board[i][j] = restoreVal
+
+
+def compForcedMoves(board, player, bot, ntWin):
+    #Check to see if there is an easy win in the next move
+    #Cycle through the spaces
+   for i, j in ((ti, tj) for ti in range(len(board)) for tj in range(len(board))):
+        
+       #Check if space is free
+       
+       if spaceIsFree(board, i, j):
+       
+            #keep the restore value
+            restoreVal = board[i][j]
+            #make a possible winning move
+            board[i][j] = bot
+            #check to see if the move has won
+            if winConditionMark(board, bot, ntWin):
+                #You won
+                showGrid(board)
+                print("Calls to miniMax: " + str(minimax.counter))
+                return True
+            #You didn't win, restore the old value
+            else:
+                board[i][j] = restoreVal
+            
+
+    #Check to see if there is a block that you must make to keep the opponent from winning
+    #Cycle through the spaces
+   for i, j in ((ti, tj) for ti in range(len(board)) for tj in range(len(board))):
+        
+       #Check if space is free
+       
+       if spaceIsFree(board, i, j):
+       
+            #keep the restore value
+            restoreVal = board[i][j]
+            #Move the computer into that spot (a turn ahead)
+            board[i][j] = player
+            #Check to see if that caused the computer to win
+            if winConditionMark(board, player, ntWin):
+                #The computer will win if it goes there, take the spot from them
+                board[i][j] = bot
+                showGrid(board)
+                print("Calls to miniMax: " + str(minimax.counter))
+                return True
+            #The computer won't win there, you can leave it for now
+            else:
+                board[i][j] = restoreVal
+
+
+
 def playerMove(board, player, bot, ntWin):
     
     start = time.perf_counter()
@@ -73,6 +170,11 @@ def playerMove(board, player, bot, ntWin):
     
     xloc = 0
     yloc = 0
+
+    #Look for forced moves.  If one is made, return without running miniMax
+    if playerForcedMoves(board, player, bot, ntWin) == True:
+        return
+
 
     for i in range(len(board)):
         for j in range(len(board)):
@@ -107,6 +209,10 @@ def compMove(board, player, bot, ntWin):
 
     xloc = 0
     yloc = 0
+    
+    #Look for forced moves.  If one is made, return without running miniMax
+    if compForcedMoves(board, player, bot, ntWin) == True:
+       return
 
     for i in range(len(board)):
         for j in range(len(board)):
@@ -156,7 +262,7 @@ def minimax(board, depth, isMaximizing, player, bot, ntWin, alpha, beta):
         return 0
     
     else:
-        if depth > 2:
+        if depth > 3:
             return heuristic5(board)
 
     if isMaximizing:
