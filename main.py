@@ -51,11 +51,11 @@ from winConditionsMarks import *
 
 
 #force the game to run a 3x3 to test miniMax..
-board = makeGrid(5,5)
-ntWin = 5
-pchoice = True
 
 
+playerWin = 0
+compWin = 0
+tieGame = 0 
 #testing single loop
 
         
@@ -67,21 +67,44 @@ pchoice = True
 #print("I am freeee")
 
 
+#open the TTT_Data file
+file = open("TTT_Data.txt", "a")
 
 
-if pchoice == True: 
-    player = ' X '
-    bot = ' O '
-    while winCondition(board, ntWin) == False and drawCondition(board) == False:  #Fix exit game
-        playerMove(board, player, bot, ntWin)
-        compMove(board, player, bot, ntWin)
+
+for i in range(10):
+    
+    #Set / Reset the board for multiple game runs
+    board = makeGrid(5,5)
+    ntWin = 5
+    pchoice = True
+
+    if pchoice == True: 
+        player = ' X '
+        bot = ' O '
+        while winCondition(board, ntWin) == False and drawCondition(board) == False:  #Fix exit game
+            playerMove(board, player, bot, ntWin)
+            compMove(board, player, bot, ntWin)
+            
+        playerWin, compWin, tieGame = gameCounter(board, player, bot, playerWin, compWin, tieGame)
+    
+    
+    
+out = "For a 5x5 game, 5 to win, Forced, abP, DLS=2:\n" + "Player Wins: " + str(playerWin) + "\nComputer Wins: " + str(compWin) + "\nTie Games: " + str(tieGame)
+    
+file.write(out)
+
+file.close()
+        
+        
+"""
 else:
     player = ' O '
     bot = ' X '
     while winCondition(board, ntWin) == False:
        compMove(board, player, bot, ntWin)
        playerMove(board, player, bot, ntWin) 
-
+"""
 
 """
 if playerFirst:

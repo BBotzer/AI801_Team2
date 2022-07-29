@@ -11,6 +11,8 @@ as well as determine who gets to go first, the player or the AI
 
 
 from displayBoard import *
+from fastWinConMark import *
+from winConditionsMarks import drawCondition
 
 
 def queryBoard():
@@ -54,3 +56,19 @@ def queryPlayer():
         #The AI shall start the game
         return False
     
+    
+   
+    
+    
+def gameCounter(board, player, comp, playerWin, compWin, tieGame):
+        
+    if fastWinCon5Mark(board, player) == True:
+        playerWin += 1
+    elif fastWinCon5Mark(board, comp) == True:
+        compWin += 1     
+    if drawCondition(board) == True:
+        tieGame += 1
+
+    return playerWin, compWin, tieGame
+
+

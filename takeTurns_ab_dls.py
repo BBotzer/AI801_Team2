@@ -34,7 +34,7 @@ def makeMove(letter, xloc, yloc, gboard, ntWin):
     
     if spaceIsFree(gboard,x,y) == False:
         #print("That space is taken.  Try again.\n")
-        return
+        return False
     else:
         
     
@@ -263,7 +263,7 @@ def minimax(board, depth, isMaximizing, player, bot, ntWin, alpha, beta):
         return 0
     
     else:
-        if depth > 3:
+        if depth > 2:
             return heuristic5(board)
 
     if isMaximizing:

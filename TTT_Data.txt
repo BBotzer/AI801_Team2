@@ -1,0 +1,4 @@
+For a 5x5 game, 5 to win, Forced, abP, DLS=2:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
