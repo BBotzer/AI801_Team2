@@ -33,6 +33,7 @@ from gameSetup import *
 from takeTurns_ab_dls import *
 
 from winConditionsMarks import *
+import time
 
 
 
@@ -72,28 +73,49 @@ file = open("TTT_Data.txt", "a")
 
 
 
-for i in range(10):
+#Run loop over all game sizes ( 5x5 through 10x10)
+for q in range (5,6):
     
-    #Set / Reset the board for multiple game runs
-    board = makeGrid(5,5)
-    ntWin = 5
-    pchoice = True
+    playerWin = 0
+    compWin = 0
+    tieGame = 0 
+    totalTime = 0
+    avgTime = 0
 
-    if pchoice == True: 
-        player = ' X '
-        bot = ' O '
-        while winCondition(board, ntWin) == False and drawCondition(board) == False:  #Fix exit game
-            playerMove(board, player, bot, ntWin)
-            compMove(board, player, bot, ntWin)
+    for i in range(10):
+        
+        #Set / Reset the board for multiple game runs
+        board = makeGrid(q,q)
+        ntWin = q
+        pchoice = True
+    
+        if pchoice == True: 
+            player = ' X '
+            bot = ' O '
+            gameStart = time.perf_counter()
+            while winCondition(board, ntWin) == False and drawCondition(board) == False:  #Fix exit game
+                playerMove(board, player, bot, ntWin)
+                compMove(board, player, bot, ntWin)
             
-        playerWin, compWin, tieGame = gameCounter(board, player, bot, playerWin, compWin, tieGame)
+            gameEnd = time.perf_counter()
+            
+            totalTime = totalTime + (gameEnd - gameStart)
+            playerWin, compWin, tieGame = gameCounter(board, player, bot, playerWin, compWin, tieGame)
+        
+        
+    avgTime = totalTime / 10
     
-    
-    
-out = "For a 5x5 game, 5 to win, Forced, abP, DLS=2:\n" + "Player Wins: " + str(playerWin) + "\nComputer Wins: " + str(compWin) + "\nTie Games: " + str(tieGame)
-    
-file.write(out)
+    print("Average Game Time for a " + str(q) + 'x' + str(q) + " game: " + str(avgTime))  
+    out = "For a " + str(q) + "x" + str(q) + " game, " + str(q) + " to win, Forced Moves, abPruning, DLS=1:\n" + "Player Wins: " + str(playerWin) + "\nComputer Wins: " + str(compWin) + "\nTie Games: " + str(tieGame) + "\nAvg. Game Time: " + str(avgTime) + "\n\n"
+        
+    file.write(out)
 
+
+
+
+
+
+#Close the File
 file.close()
         
         

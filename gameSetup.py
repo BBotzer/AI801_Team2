@@ -61,13 +61,56 @@ def queryPlayer():
     
     
 def gameCounter(board, player, comp, playerWin, compWin, tieGame):
-        
-    if fastWinCon5Mark(board, player) == True:
-        playerWin += 1
-    elif fastWinCon5Mark(board, comp) == True:
-        compWin += 1     
-    if drawCondition(board) == True:
-        tieGame += 1
+    
+    
+    if len(board) == 5:
+        if fastWinCon5Mark(board, player) == True:
+            playerWin += 1
+        elif fastWinCon5Mark(board, comp) == True:
+            compWin += 1     
+        if drawCondition(board) == True:
+            tieGame += 1
+            
+    elif len(board) == 6:
+        if fastWinCon6Mark(board, player) == True:
+            playerWin += 1
+        elif fastWinCon6Mark(board, comp) == True:
+            compWin += 1     
+        if drawCondition(board) == True:
+            tieGame += 1
+            
+    elif len(board) == 7:
+        if fastWinCon7Mark(board, player) == True:
+            playerWin += 1
+        elif fastWinCon7Mark(board, comp) == True:
+            compWin += 1     
+        if drawCondition(board) == True:
+            tieGame += 1
+            
+    elif len(board) == 8:
+        if fastWinCon8Mark(board, player) == True:
+            playerWin += 1
+        elif fastWinCon8Mark(board, comp) == True:
+            compWin += 1     
+        if drawCondition(board) == True:
+            tieGame += 1
+            
+    elif len(board) == 9:
+        if fastWinCon9Mark(board, player) == True:
+            playerWin += 1
+        elif fastWinCon9Mark(board, comp) == True:
+            compWin += 1     
+        if drawCondition(board) == True:
+            tieGame += 1
+            
+    elif len(board) == 10:
+        if fastWinCon10Mark(board, player) == True:
+            playerWin += 1
+        elif fastWinCon10Mark(board, comp) == True:
+            compWin += 1     
+        if drawCondition(board) == True:
+            tieGame += 1
+
 
     return playerWin, compWin, tieGame
 

@@ -252,23 +252,76 @@ def callCount():
 def minimax(board, depth, isMaximizing, player, bot, ntWin, alpha, beta):
     
     minimax.counter += 1
+    depthlimit = 1
     
     #Check which size board you have to choose the right win and heuristic calls len(board)
     
-    if fastWinCon5Mark(board, player):
-        #Faster win conditions (lower depth) are better to play
-        return ((len(board)**2) - depth)
-
-    elif fastWinCon5Mark(board, bot):
-        return (depth - (len(board)**2))
-
-    elif drawCondition(board):
-        return 0
-    
-    else:
-        if depth > 2:
-            return heuristic5(board)
-
+    if len(board) == 5:
+        if fastWinCon5Mark(board, player):
+            #Faster win conditions (lower depth) are better to play
+            return ((len(board)**2) - depth)
+        elif fastWinCon5Mark(board, bot):
+            return (depth - (len(board)**2))
+        elif drawCondition(board):
+            return 0    
+        else:
+            if depth > depthlimit:
+                return heuristic5(board)
+    elif len(board) == 6:
+        if fastWinCon6Mark(board, player):
+            #Faster win conditions (lower depth) are better to play
+            return ((len(board)**2) - depth)
+        elif fastWinCon6Mark(board, bot):
+            return (depth - (len(board)**2))
+        elif drawCondition(board):
+            return 0    
+        else:
+            if depth > depthlimit:
+                return heuristic6(board)
+    elif len(board) == 7:
+        if fastWinCon7Mark(board, player):
+            #Faster win conditions (lower depth) are better to play
+            return ((len(board)**2) - depth)
+        elif fastWinCon7Mark(board, bot):
+            return (depth - (len(board)**2))
+        elif drawCondition(board):
+            return 0    
+        else:
+            if depth > depthlimit:
+                return heuristic7(board)
+    elif len(board) == 8:
+        if fastWinCon8Mark(board, player):
+            #Faster win conditions (lower depth) are better to play
+            return ((len(board)**2) - depth)
+        elif fastWinCon8Mark(board, bot):
+            return (depth - (len(board)**2))
+        elif drawCondition(board):
+            return 0    
+        else:
+            if depth > depthlimit:
+                return heuristic8(board)
+    elif len(board) == 9:
+        if fastWinCon9Mark(board, player):
+            #Faster win conditions (lower depth) are better to play
+            return ((len(board)**2) - depth)
+        elif fastWinCon9Mark(board, bot):
+            return (depth - (len(board)**2))
+        elif drawCondition(board):
+            return 0    
+        else:
+            if depth > depthlimit:
+                return heuristic9(board)
+    elif len(board) == 10:
+        if fastWinCon10Mark(board, player):
+            #Faster win conditions (lower depth) are better to play
+            return ((len(board)**2) - depth)
+        elif fastWinCon10Mark(board, bot):
+            return (depth - (len(board)**2))
+        elif drawCondition(board):
+            return 0    
+        else:
+            if depth > depthlimit:
+                return heuristic10(board)
 
 
     #Run the miniMax to obtain best move

@@ -2,3 +2,48 @@ For a 5x5 game, 5 to win, Forced, abP, DLS=2:
 Player Wins: 0
 Computer Wins: 0
 Tie Games: 10
+Avg. Game Time: 2.671667920000618
+For a 7x7 game, 7 to win, Forced, abP, DLS=2:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 116.78401172000304
+
+
+For a 5x5 game, 5 to win, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 0.22253493999887725
+
+For a 6x6 game, 6 to win, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 1.2147114199993667
+
+For a 7x7 game, 7 to win, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 3.9327541199992995
+
+For a 8x8 game, 8 to win, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 15.556325450002623
+
+For a 9x9 game, 9 to win, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 48.881276649997744
+
+For a 10x10 game, 10 to win, Forced Moves, abPruning, DLS=1:  
+(Board did a weird thing here where it just started letting only 'X' play once the game had hit a draw state.  
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 168.2233970199988
+
