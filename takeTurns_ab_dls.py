@@ -253,7 +253,10 @@ def minimax(board, depth, isMaximizing, player, bot, ntWin, alpha, beta):
     
     minimax.counter += 1
     
+    #Check which size board you have to choose the right win and heuristic calls len(board)
+    
     if fastWinCon5Mark(board, player):
+        #Faster win conditions (lower depth) are better to play
         return ((len(board)**2) - depth)
 
     elif fastWinCon5Mark(board, bot):
@@ -266,6 +269,9 @@ def minimax(board, depth, isMaximizing, player, bot, ntWin, alpha, beta):
         if depth > 2:
             return heuristic5(board)
 
+
+
+    #Run the miniMax to obtain best move
     if isMaximizing:
         bestMax = -1000
 
