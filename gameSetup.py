@@ -63,7 +63,16 @@ def queryPlayer():
 def gameCounter(board, player, comp, playerWin, compWin, tieGame):
     
     
-    if len(board) == 5:
+    if len(board) == 3:
+        if fastWinCon3Mark(board, player) == True:
+            playerWin += 1
+        elif fastWinCon3Mark(board, comp) == True:
+            compWin += 1     
+        if drawCondition(board) == True:
+            tieGame += 1
+    
+    
+    elif len(board) == 5:
         if fastWinCon5Mark(board, player) == True:
             playerWin += 1
         elif fastWinCon5Mark(board, comp) == True:

@@ -26,6 +26,8 @@ import copy
 import site
 import time
 
+
+
 def makeMove(letter, xloc, yloc, gboard, ntWin):
     #take the move letter, the x and y location, and the current board state
    
@@ -44,15 +46,71 @@ def makeMove(letter, xloc, yloc, gboard, ntWin):
         else:
             check = ' X '
         
-        #Check to see if the game ended
-        if fastWinCon5Mark(gboard, check):
-            showGrid(gboard)
-            return False
-        if drawCondition(gboard):
-            showGrid(gboard)
-            print("this is a draw and I don't want to play")
-            return False
+        #Check to see if the game ended for different board lengths so you don't make an extra move:
+         
+        if len(gboard) == 3:
+            if fastWinCon3Mark(gboard, check):
+                showGrid(gboard)
+                return False
+            
+            if drawCondition(gboard):
+                showGrid(gboard)
+                print("this is a draw and I don't want to play")
+                return False
+            
+        elif len(gboard) == 5:    
+            if fastWinCon5Mark(gboard, check):
+                showGrid(gboard)
+                return False
+            if drawCondition(gboard):
+                showGrid(gboard)
+                print("this is a draw and I don't want to play")
+                return False
+            
+        elif len(gboard) == 6:
+            if fastWinCon6Mark(gboard, check):
+                showGrid(gboard)
+                return False
+            if drawCondition(gboard):
+                showGrid(gboard)
+                print("this is a draw and I don't want to play")
+                return False
+            
+        elif len(gboard) == 7:
+            if fastWinCon7Mark(gboard, check):
+                showGrid(gboard)
+                return False
+            if drawCondition(gboard):
+                showGrid(gboard)
+                print("this is a draw and I don't want to play")
+                return False  
+        
+        elif len(gboard) == 8:
+            if fastWinCon8Mark(gboard, check):
+                showGrid(gboard)
+                return False
+            if drawCondition(gboard):
+                showGrid(gboard)
+                print("this is a draw and I don't want to play")
+                return False
     
+        elif len(gboard) == 9:
+            if fastWinCon9Mark(gboard, check):
+                showGrid(gboard)
+                return False
+            if drawCondition(gboard):
+                showGrid(gboard)
+                print("this is a draw and I don't want to play")
+                return False
+            
+        elif len(gboard) == 10:
+            if fastWinCon10Mark(gboard, check):
+                showGrid(gboard)
+                return False
+            if drawCondition(gboard):
+                showGrid(gboard)
+                print("this is a draw and I don't want to play")
+                return False
     
         #used to update the board
         gboard[x][y] =  letter 
@@ -172,6 +230,8 @@ def playerMove(board, player, bot, ntWin):
     xloc = 0
     yloc = 0
 
+    start = time.perf_counter()
+
     #Look for forced moves.  If one is made, return without running miniMax
     if playerForcedMoves(board, player, bot, ntWin) == True:
         return
@@ -191,16 +251,18 @@ def playerMove(board, player, bot, ntWin):
                     yloc = j
 
     makeMove(player, xloc, yloc, board, ntWin)
+    end = time.perf_counter()
     showGrid(board)
     print("Calls to miniMax: " + str(minimax.counter))
-    end = time.perf_counter()
+    minimax.totalcalls += minimax.counter
     print("runtime: " + str(end - start))
+
     return 
 
 
 def compMove(board, player, bot, ntWin):
     
-    start = time.perf_counter()
+    
     
     player = player
     bot = bot
@@ -210,6 +272,8 @@ def compMove(board, player, bot, ntWin):
 
     xloc = 0
     yloc = 0
+    
+    start = time.perf_counter()
     
     #Look for forced moves.  If one is made, return without running miniMax
     if compForcedMoves(board, player, bot, ntWin) == True:
@@ -229,10 +293,12 @@ def compMove(board, player, bot, ntWin):
                     yloc = j
 
     makeMove(bot, xloc, yloc, board, ntWin)
+    end = time.perf_counter()
     showGrid(board)
     print("Calls to miniMax: " + str(minimax.counter))
-    end = time.perf_counter()
+    minimax.totalcalls += minimax.counter
     print("runtime: " + str(end - start))
+
     return 
 
 #Junk test minimax (delete)
@@ -252,11 +318,22 @@ def callCount():
 def minimax(board, depth, isMaximizing, player, bot, ntWin, alpha, beta):
     
     minimax.counter += 1
-    depthlimit = 1
+
+    depthlimit = 2
     
     #Check which size board you have to choose the right win and heuristic calls len(board)
-    
-    if len(board) == 5:
+    if len(board) == 3:
+        if fastWinCon3Mark(board, player):
+            #Faster win conditions (lower depth) are better to play
+            return ((len(board)**2) - depth)
+        elif fastWinCon3Mark(board, bot):
+            return (depth - (len(board)**2))
+        elif drawCondition(board):
+            return 0    
+        else:
+            if depth > depthlimit:
+                return heuristic3(board)
+    elif len(board) == 5:
         if fastWinCon5Mark(board, player):
             #Faster win conditions (lower depth) are better to play
             return ((len(board)**2) - depth)
@@ -360,4 +437,5 @@ def minimax(board, depth, isMaximizing, player, bot, ntWin, alpha, beta):
                 break
             
         return bestMin
-    
+
+minimax.totalcalls = 0

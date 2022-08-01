@@ -27,6 +27,60 @@ def fastWinCon3Mark(board, mark):
     else:
         return False
     
+def heuristic3(board):
+    
+    
+    #mark is the first player looking to maximize the score
+    mark = ' X '
+    #Opp is the second player looking to minimize the score
+    opp= ' O '
+    
+    xlines = 0
+    olines = 0
+    
+    #X Player
+    if (board[0][0] != opp and board[0][1] != opp and board[0][2] != opp):
+        xlines +=1
+    if (board[1][0] != opp and board[1][1] != opp and board[1][2] != opp):
+        xlines +=1
+    if (board[2][0] != opp and board[2][1] != opp and board[2][2] != opp):
+        xlines +=1
+    if (board[0][0] != opp and board[1][0] != opp and board[2][0] != opp):
+       xlines +=1
+    if (board[0][1] != opp and board[1][1] != opp and board[2][1] != opp):
+        xlines +=1
+    if (board[0][2] != opp and board[1][2] != opp and board[2][2] != opp):
+        xlines +=1
+    if (board[0][0] != opp and board[1][1] != opp and board[2][2] != opp):
+        xlines +=1
+    if (board[2][0] != opp and board[1][1] != opp and board[0][2] != opp):
+        xlines +=1
+        
+        
+        
+    #O player
+    if (board[0][0] != mark and board[0][1] != mark and board[0][2] != mark):
+        olines +=1
+    if (board[1][0] != mark and board[1][1] != mark and board[1][2] != mark):
+        olines +=1
+    if (board[2][0] != mark and board[2][1] != mark and board[2][2] != mark):
+        olines +=1
+    if (board[0][0] != mark and board[1][0] != mark and board[2][0] != mark):
+       olines +=1
+    if (board[0][1] != mark and board[1][1] != mark and board[2][1] != mark):
+        olines +=1
+    if (board[0][2] != mark and board[1][2] != mark and board[2][2] != mark):
+        olines +=1
+    if (board[0][0] != mark and board[1][1] != mark and board[2][2] != mark):
+        olines +=1
+    if (board[2][0] != mark and board[1][1] != mark and board[0][2] != mark):
+        olines +=1
+    
+    heuristic = xlines - olines
+    
+    return heuristic
+    
+    
 #5x5 Board conditions 
 
 
