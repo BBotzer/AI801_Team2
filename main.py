@@ -75,7 +75,7 @@ file = open("TTT_Data.txt", "a")
 
 #Run loop over all game sizes ( 5x5 through 10x10)
 #Running range (5, 11) does sizes 5 -> 10
-for q in range (5,11):
+for q in range (8,9):
     
     
     #Reset record values
@@ -87,7 +87,7 @@ for q in range (5,11):
     minimax.totalcalls = 0
     
     #Number of games to play for the test of each board
-    numGames = 10
+    numGames = 500
 
     for i in range(numGames):
         
@@ -101,7 +101,8 @@ for q in range (5,11):
             bot = ' O '
             gameStart = time.perf_counter()
             while winCondition(board, ntWin) == False and drawCondition(board) == False:  #Fix exit game
-                playerMove(board, player, bot, ntWin)
+                #playerMove(board, player, bot, ntWin)
+                randomMove(board, player, ntWin)
                 compMove(board, player, bot, ntWin)
             
             gameEnd = time.perf_counter()
@@ -109,13 +110,13 @@ for q in range (5,11):
             totalTime = totalTime + (gameEnd - gameStart)
             playerWin, compWin, tieGame = gameCounter(board, player, bot, playerWin, compWin, tieGame)
         
-        
+        print("\nYou are on run: " + str(i) +"/499")
     
     print("\nTotal Calls to miniMax: " + str(int(minimax.totalcalls/numGames)))
     
     avgTime = totalTime / numGames
     print("Average Game Time for a " + str(q) + 'x' + str(q) + " game: " + str(avgTime))  
-    out = "For a " + str(q) + "x" + str(q) + " game, " + str(q) + " to win, Forced Moves, abPruning, DLS=2:\n" + "Player Wins: " + str(playerWin) + "\nComputer Wins: " + str(compWin) + "\nTie Games: " + str(tieGame) + "\nAvg. Game Time: " + str(avgTime) + "\nNumber of Calls to miniMax: " + str(int(minimax.totalcalls/numGames))+ "\n\n"
+    out = "For a " + str(q) + "x" + str(q) + " game, " + str(q) + " to win, Random P1, Forced Moves, abPruning, DLS=2:\n" + "Player Wins: " + str(playerWin) + "\nComputer Wins: " + str(compWin) + "\nTie Games: " + str(tieGame) + "\nAvg. Game Time: " + str(avgTime) + "\nNumber of Calls to miniMax: " + str(int(minimax.totalcalls/numGames))+ "\n\n"
         
     file.write(out)
 

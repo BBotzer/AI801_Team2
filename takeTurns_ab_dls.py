@@ -25,7 +25,105 @@ from displayBoard import *
 import copy
 import site
 import time
+import random
 
+
+
+def randomMove(gboard, letter, ntWin):
+    
+    flag = False
+    
+    endRange = len(gboard) - 1
+    
+    
+    while flag == False:
+        
+        x = random.randint(0, endRange)
+        y = random.randint(0, endRange)
+        
+        if spaceIsFree(gboard, x, y) == True:
+            
+            #Check to see if game ended
+            if letter == ' X ':
+                check = ' O '
+            else:
+                check = ' X '
+            
+            #Check to see if the game ended for different board lengths so you don't make an extra move:
+             
+            if len(gboard) == 3:
+                if fastWinCon3Mark(gboard, check):
+                    showGrid(gboard)
+                    return False
+                
+                if drawCondition(gboard):
+                    showGrid(gboard)
+                    print("this is a draw and I don't want to play")
+                    return False
+                
+            elif len(gboard) == 5:    
+                if fastWinCon5Mark(gboard, check):
+                    showGrid(gboard)
+                    return False
+                if drawCondition(gboard):
+                    showGrid(gboard)
+                    print("this is a draw and I don't want to play")
+                    return False
+                
+            elif len(gboard) == 6:
+                if fastWinCon6Mark(gboard, check):
+                    showGrid(gboard)
+                    return False
+                if drawCondition(gboard):
+                    showGrid(gboard)
+                    print("this is a draw and I don't want to play")
+                    return False
+                
+            elif len(gboard) == 7:
+                if fastWinCon7Mark(gboard, check):
+                    showGrid(gboard)
+                    return False
+                if drawCondition(gboard):
+                    showGrid(gboard)
+                    print("this is a draw and I don't want to play")
+                    return False  
+            
+            elif len(gboard) == 8:
+                if fastWinCon8Mark(gboard, check):
+                    showGrid(gboard)
+                    return False
+                if drawCondition(gboard):
+                    showGrid(gboard)
+                    print("this is a draw and I don't want to play")
+                    return False
+        
+            elif len(gboard) == 9:
+                if fastWinCon9Mark(gboard, check):
+                    showGrid(gboard)
+                    return False
+                if drawCondition(gboard):
+                    showGrid(gboard)
+                    print("this is a draw and I don't want to play")
+                    return False
+                
+            elif len(gboard) == 10:
+                if fastWinCon10Mark(gboard, check):
+                    showGrid(gboard)
+                    return False
+                if drawCondition(gboard):
+                    showGrid(gboard)
+                    print("this is a draw and I don't want to play")
+                    return False
+        
+            #used to update the board
+            gboard[x][y] =  letter 
+        
+            
+            #return used to create the board
+            return gboard
+            
+            
+            
 
 
 def makeMove(letter, xloc, yloc, gboard, ntWin):
