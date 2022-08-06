@@ -75,7 +75,7 @@ file = open("TTT_Data.txt", "a")
 
 #Run loop over all game sizes ( 5x5 through 10x10)
 #Running range (5, 11) does sizes 5 -> 10
-for q in range (8,9):
+for q in range (10,11):
     
     
     #Reset record values
@@ -87,7 +87,7 @@ for q in range (8,9):
     minimax.totalcalls = 0
     
     #Number of games to play for the test of each board
-    numGames = 500
+    numGames = 250
 
     for i in range(numGames):
         
@@ -102,8 +102,9 @@ for q in range (8,9):
             gameStart = time.perf_counter()
             while winCondition(board, ntWin) == False and drawCondition(board) == False:  #Fix exit game
                 #playerMove(board, player, bot, ntWin)
-                randomMove(board, player, ntWin)
                 compMove(board, player, bot, ntWin)
+                randomMove(board, player, ntWin)
+                
             
             gameEnd = time.perf_counter()
             
@@ -116,7 +117,7 @@ for q in range (8,9):
     
     avgTime = totalTime / numGames
     print("Average Game Time for a " + str(q) + 'x' + str(q) + " game: " + str(avgTime))  
-    out = "For a " + str(q) + "x" + str(q) + " game, " + str(q) + " to win, Random P1, Forced Moves, abPruning, DLS=2:\n" + "Player Wins: " + str(playerWin) + "\nComputer Wins: " + str(compWin) + "\nTie Games: " + str(tieGame) + "\nAvg. Game Time: " + str(avgTime) + "\nNumber of Calls to miniMax: " + str(int(minimax.totalcalls/numGames))+ "\n\n"
+    out = "For a " + str(q) + "x" + str(q) + " game, " + str(q) + " to win, AI FIRST and Random P1, Forced Moves, abPruning, DLS=2:\n" + "Player Wins: " + str(playerWin) + "\nComputer Wins: " + str(compWin) + "\nTie Games: " + str(tieGame) + "\nAvg. Game Time: " + str(avgTime) + "\nNumber of Calls to miniMax: " + str(int(minimax.totalcalls/numGames))+ "\n\n"
         
     file.write(out)
 

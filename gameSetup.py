@@ -68,7 +68,7 @@ def gameCounter(board, player, comp, playerWin, compWin, tieGame):
             playerWin += 1
         elif fastWinCon3Mark(board, comp) == True:
             compWin += 1     
-        if drawCondition(board) == True:
+        elif drawCondition(board) == True:
             tieGame += 1
     
     
@@ -77,7 +77,7 @@ def gameCounter(board, player, comp, playerWin, compWin, tieGame):
             playerWin += 1
         elif fastWinCon5Mark(board, comp) == True:
             compWin += 1     
-        if drawCondition(board) == True:
+        elif drawCondition(board) == True:
             tieGame += 1
             
     elif len(board) == 6:
@@ -85,7 +85,7 @@ def gameCounter(board, player, comp, playerWin, compWin, tieGame):
             playerWin += 1
         elif fastWinCon6Mark(board, comp) == True:
             compWin += 1     
-        if drawCondition(board) == True:
+        elif drawCondition(board) == True:
             tieGame += 1
             
     elif len(board) == 7:
@@ -93,7 +93,7 @@ def gameCounter(board, player, comp, playerWin, compWin, tieGame):
             playerWin += 1
         elif fastWinCon7Mark(board, comp) == True:
             compWin += 1     
-        if drawCondition(board) == True:
+        elif drawCondition(board) == True:
             tieGame += 1
             
     elif len(board) == 8:
@@ -101,7 +101,7 @@ def gameCounter(board, player, comp, playerWin, compWin, tieGame):
             playerWin += 1
         elif fastWinCon8Mark(board, comp) == True:
             compWin += 1     
-        if drawCondition(board) == True:
+        elif drawCondition(board) == True:
             tieGame += 1
             
     elif len(board) == 9:
@@ -109,7 +109,7 @@ def gameCounter(board, player, comp, playerWin, compWin, tieGame):
             playerWin += 1
         elif fastWinCon9Mark(board, comp) == True:
             compWin += 1     
-        if drawCondition(board) == True:
+        elif drawCondition(board) == True:
             tieGame += 1
             
     elif len(board) == 10:
@@ -117,7 +117,7 @@ def gameCounter(board, player, comp, playerWin, compWin, tieGame):
             playerWin += 1
         elif fastWinCon10Mark(board, comp) == True:
             compWin += 1     
-        if drawCondition(board) == True:
+        elif drawCondition(board) == True:
             tieGame += 1
 
 
