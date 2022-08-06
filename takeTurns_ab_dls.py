@@ -29,6 +29,43 @@ import random
 
 
 
+def humanMove(board, player, ntWin):
+    
+    #Human Move
+    
+    
+    #Run the items in the main to prevent hang ups
+    #Flag to ensure the player doesn't cheat
+    flag1 = False
+    flag2 = False
+    
+    #Player Move
+    while flag1 == False or flag2 == False:
+        print("\nWhat is the row location to mark?\n")
+        x = int(input())
+        print("\nWhat is the column location to mark?\n")
+        y = int(input())
+        
+        #Check is move is wihtin the board
+        if x < ntWin and y < ntWin and x >=0 and y>=0:
+            flag1 = True
+            
+            if spaceIsFree(board, x, y) == True:
+                makeMove(player, x, y, board, ntWin)
+                flag2 = True
+                showGrid(board)
+            else:
+                print("Stop trying to cheat and pick an open space!\n")
+                showGrid(board)
+        else:
+            print("You need to pick something on the board.  Not in space!\n \n")
+            showGrid(board)
+        
+    return
+
+
+
+
 def randomMove(gboard, letter, ntWin):
     
     flag = False

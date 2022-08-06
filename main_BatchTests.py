@@ -3,24 +3,50 @@
 This is the main driver for the Tic Tac Topia AI project.
 
 Authors:
-    Penn State AI-801, Summer 2022, TEAM 2
-    Brandon Botzer
-    Ambika Chundru
-    Nick Bartkowiak
+    Brandon Botzer - Penn State AI-801, Summer 2022, TEAM 2
     
-
 Purpose:
-    This is a generalized n by n TicTacToe game played against an AI
+    To run multiple games of TTT for testing results.
     
 How to use this code:
-    Enter the n dimentision of the n x n board.
-    Enter how many 'in a row' it takes to win the game.
-    Enter if the Player is first (yes) or the AI is first (no)
     
-    For some reason I still do not understand, the text entry sometimes hangs up
-    and freezes.  Ctrl-x and then rerunning it will often work to fix the problem.
-    This will need to be fixed or just hard coded when we do our trials.
-
+    Please note, this code was written for tests and as such, a base knowledge
+    of how the code should function is needed.  The following information shall
+    help you determine what needs to change depending on what test you are running.
+    
+    In line 42, select which board sizes you'd like to test.
+        NOTE: If testing the 3x3 board, enter: range(3,4)
+        NOTE: If testing larger board sizes: range(5,7)
+                This will test board sizes 5 and 6
+                You are able to test boards 5 --> 10
+                To do so, enter: range(5,11)
+                THERE IS NO TEST FOR A BOARD SIZE OF 4
+                
+    In line 53, select the number of games you'd like to simulate at each baord size
+        NOTE: Large board sizes take considerable amount of time to run tests on
+                It is best practice to run large boards by themselves and at a lower
+                number of games.
+                
+    
+    Lines 85 - 95 contain the various move sets for the tests:
+        Line 8 contains the AI miniMax Player.
+        Line 9 contains the AI miniMax Computer.
+        Line 9 continas the random Player.
+        
+        These players can be commented out to determine what the AI computer is up against
+        They can also be shuffled in their order to determine the starting player
+        
+        
+    To assign the proper Depth Limit for the searching algormithm, you must go into 'takeTurns_ab_dls.py'
+        in the miniMax function, you will see a value for the depth limit.
+        this value represents how deep the search tree will go before it ignores win conditions and returns the heuristic
+            NOTE: FOR LARGE BOARD SIZES, VALUES ABOVE ONE FOR THE DLS WILL CAUSE EXTREAMLY LONG RUNTIMES
+            
+    Please ensure that the TTT_Data.txt file has been created in your repository.  This is where the run data will be stored.
+    
+    In the last few lines, make sure you have updated your output to reflect what tests you are running.
+    
+    Once ready, you are free to run the code and test.
 
 """
 
@@ -28,49 +54,16 @@ How to use this code:
 from displayBoard import *
 from winCondition import *
 from gameSetup import *
-
-#Modify takeTurns based on what you are testing (abPruning or regular miniMax)
-from takeTurns_ab_dls import *
-
 from winConditionsMarks import *
 import time
 
 
-
-
-#Query user for the board dimensions
-#board = queryBoard()
-
-#Query user for the number needed to win
-#ntWin = needWin(board)
-
-#Query user for who goes first
-#playerFirst = queryPlayer()
-
-#I made up the winConditions method, but it would be easier to run this loop
-#if we combine all the win condition methods into one so only one method needs to be false here.
-
-
-#force the game to run a 3x3 to test miniMax..
-
-
-playerWin = 0
-compWin = 0
-tieGame = 0 
-#testing single loop
-
-        
-#for i, j in ((ti, tj) for ti in range(len(board)) for tj in range(len(board))):
-#    print(str(i) +", " +  str(j))
-#    if j == 2:
-#        break
-    
-#print("I am freeee")
+#Modify takeTurns based on what you are testing (abPruning or regular miniMax)
+from takeTurns_ab_dls import *
 
 
 #open the TTT_Data file
 file = open("TTT_Data.txt", "a")
-
 
 
 #Run loop over all game sizes ( 5x5 through 10x10)
@@ -94,28 +87,41 @@ for q in range (10,11):
         #Set / Reset the board for multiple game runs
         board = makeGrid(q,q)
         ntWin = q
+        #A relic of the playGame scenario to determine first player
         pchoice = True
-    
+        
+        
         if pchoice == True: 
             player = ' X '
             bot = ' O '
+            #Begin timing the game
             gameStart = time.perf_counter()
-            while winCondition(board, ntWin) == False and drawCondition(board) == False:  #Fix exit game
+            while winCondition(board, ntWin) == False and drawCondition(board) == False:
+                #THIS IS THE AI PLAYER
                 #playerMove(board, player, bot, ntWin)
+                
+                #THIS IS THE AI COMPUTER
                 compMove(board, player, bot, ntWin)
+                
+                #THIS IS THE RANDOM PLAYER
                 randomMove(board, player, ntWin)
                 
-            
+            #end time on a single game
             gameEnd = time.perf_counter()
             
+            #Store times to find an average later
             totalTime = totalTime + (gameEnd - gameStart)
+            #Update the counts -> Seems to be an issue with tieGames (unsure where)
             playerWin, compWin, tieGame = gameCounter(board, player, bot, playerWin, compWin, tieGame)
         
-        print("\nYou are on run: " + str(i) +"/499")
+        print("\nYou are on run: " + str(i+1) +"/" + str(numGames))
     
     print("\nTotal Calls to miniMax: " + str(int(minimax.totalcalls/numGames)))
     
     avgTime = totalTime / numGames
+    
+    
+    #UPDATE THE OUTPUT FOR THE TESTS YOU ARE RUNNING
     print("Average Game Time for a " + str(q) + 'x' + str(q) + " game: " + str(avgTime))  
     out = "For a " + str(q) + "x" + str(q) + " game, " + str(q) + " to win, AI FIRST and Random P1, Forced Moves, abPruning, DLS=2:\n" + "Player Wins: " + str(playerWin) + "\nComputer Wins: " + str(compWin) + "\nTie Games: " + str(tieGame) + "\nAvg. Game Time: " + str(avgTime) + "\nNumber of Calls to miniMax: " + str(int(minimax.totalcalls/numGames))+ "\n\n"
         
@@ -130,48 +136,6 @@ for q in range (10,11):
 file.close()
         
         
-"""
-else:
-    player = ' O '
-    bot = ' X '
-    while winCondition(board, ntWin) == False:
-       compMove(board, player, bot, ntWin)
-       playerMove(board, player, bot, ntWin) 
-"""
 
-"""
-if playerFirst:
-    player = ' X '
-    bot = ' O '
-    while not winCondition(board, ntWin):
-        playerMove(board, player, bot, ntWin)
-        compMove(board, player, bot, ntWin)
-else:
-    player = ' O '
-    bot = ' X '
-    while not winCondition(board, ntWin):
-        compMove(board, player, bot, ntWin)
-        playerMove(board, player, bot, ntWin)
-
-"""
-
-
-"""
-
-Functions we still need:
-    
-    
-    Check for which grid positions are open (no moves on that location yet)
-        Update the makeMove() function run a check for possibleMoves() - Nick?
-        
-    
-    AI Solvers:
-        MiniMax - Ambika
-        A*
-        Breadth
-        Depth
-        
-    OTHERS???
-"""
 
 
