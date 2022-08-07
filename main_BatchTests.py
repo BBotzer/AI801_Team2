@@ -68,7 +68,7 @@ file = open("TTT_Data.txt", "a")
 
 #Run loop over all game sizes ( 5x5 through 10x10)
 #Running range (5, 11) does sizes 5 -> 10
-for q in range (10,11):
+for q in range (5,11):
     
     
     #Reset record values
