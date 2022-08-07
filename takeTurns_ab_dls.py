@@ -456,7 +456,7 @@ def minimax(board, depth, isMaximizing, player, bot, ntWin, alpha, beta):
     
     minimax.counter += 1
 
-    depthlimit = 1
+    depthlimit = 2
     
     #Check which size board you have to choose the right win and heuristic calls len(board)
     if len(board) == 3:

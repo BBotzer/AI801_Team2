@@ -405,3 +405,10 @@ Tie Games: 4
 Avg. Game Time: 949.9887416959994
 Number of Calls to miniMax: 57393419
 
+For a 10x10 game, 10 to win, AI FIRST and Random P1, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 156
+Tie Games: 62
+Avg. Game Time: 39.71058523279997
+Number of Calls to miniMax: 2387044
+
