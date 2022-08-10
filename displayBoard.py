@@ -111,7 +111,7 @@ def makeGrid(xgrid=5, ygrid=5):
 
 #Checks if the space was taken or free for a move. Returns True or False   
 def spaceIsFree(gboard, x, y):
-    if gboard[x][y]== ' X ' or gboard[x][y] == ' O ':
+    if gboard[x][y] == ' X ' or gboard[x][y] == ' O ':
         return False
     else:
         return True

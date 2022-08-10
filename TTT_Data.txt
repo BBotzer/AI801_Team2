@@ -1,0 +1,414 @@
+For a 5x5 game, 5 to win, Forced, abP, DLS=2:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 2.671667920000618
+For a 7x7 game, 7 to win, Forced, abP, DLS=2:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 116.78401172000304
+
+======================================================================
+For a 5x5 game, 5 to win, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 0.22253493999887725
+
+For a 6x6 game, 6 to win, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 1.2147114199993667
+
+For a 7x7 game, 7 to win, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 3.9327541199992995
+
+For a 8x8 game, 8 to win, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 15.556325450002623
+
+For a 9x9 game, 9 to win, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 48.881276649997744
+
+For a 10x10 game, 10 to win, Forced Moves, abPruning, DLS=1:  
+(Board did a weird thing here where it just started letting only 'X' play once the game had hit a draw state.  
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 168.2233970199988
+
+==========================================================================
+
+
+GO HERE FOR THE LARGE DATA RUN:
+
+
+DLS = 1:
+
+For a 3x3 game, 3 to win, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 0.0037835100001757382
+Number of Calls to miniMax: 633
+
+
+
+For a 5x5 game, 5 to win, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 0.2672230600001967
+Number of Calls to miniMax: 32128
+
+For a 6x6 game, 6 to win, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 1.4078309700002136
+Number of Calls to miniMax: 139447
+
+For a 7x7 game, 7 to win, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 4.566455820000192
+Number of Calls to miniMax: 402094
+
+For a 8x8 game, 8 to win, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 17.391832429999887
+Number of Calls to miniMax: 1197860
+
+For a 9x9 game, 9 to win, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 53.8205811400001
+Number of Calls to miniMax: 3581947
+
+For a 10x10 game, 10 to win, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 183.9566339000001
+Number of Calls to miniMax: 10141879
+
+
+DLS = 2:
+
+
+For a 3x3 game, 3 to win, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 0.014557560000321245
+Number of Calls to miniMax: 2676
+
+For a 5x5 game, 5 to win, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 3.0828772200000456
+Number of Calls to miniMax: 383806
+
+For a 6x6 game, 6 to win, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 23.973490519999906
+Number of Calls to miniMax: 2423455
+
+For a 7x7 game, 7 to win, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 134.25310442999998
+Number of Calls to miniMax: 11745632
+
+For a 8x8 game, 8 to win, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 649.5621242599998
+Number of Calls to miniMax: 48313646
+
+For a 9x9 game, 9 to win, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 2549.2506616100004
+Number of Calls to miniMax: 169420376
+
+For a 10x10 game, 10 to win, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 9139.678355209999
+Number of Calls to miniMax: 504425715
+
+==============================================================
+
+DLS = 3
+
+
+For a 3x3 game, 3 to win, Forced Moves, abPruning, DLS=3:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 0.03125536999999987
+Number of Calls to miniMax: 7142
+
+For a 5x5 game, 5 to win, Forced Moves, abPruning, DLS=3:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 13.647096969999996
+Number of Calls to miniMax: 1951214
+
+For a 6x6 game, 6 to win, Forced Moves, abPruning, DLS=3:
+Player Wins: 0
+Computer Wins: 0
+Tie Games: 10
+Avg. Game Time: 134.58140334
+Number of Calls to miniMax: 15879576
+
+================================================================
+
+Random Player 1   AI Goes SECOND
+
+================================================================
+
+
+
+
+For a 3x3 game, 3 to win, Random P1, Forced Moves, abPruning, DLS=1:
+Player Wins: 7
+Computer Wins: 452
+Tie Games: 41
+Avg. Game Time: 0.0015142139999861685
+Number of Calls to miniMax: 274
+
+For a 3x3 game, 3 to win, Random P1, Forced Moves, abPruning, DLS=2:
+Player Wins: 5
+Computer Wins: 407
+Tie Games: 88
+Avg. Game Time: 0.00540992260000803
+Number of Calls to miniMax: 1166
+
+For a 3x3 game, 3 to win, Random P1, Forced Moves, abPruning, DLS=3:
+Player Wins: 3
+Computer Wins: 409
+Tie Games: 89
+Avg. Game Time: 0.011000916199996937
+Number of Calls to miniMax: 2447
+
+For a 3x3 game, 3 to win, Random P1, Forced Moves, abPruning, DLS=4:
+Player Wins: 0
+Computer Wins: 443
+Tie Games: 57
+Avg. Game Time: 0.022114091599994026
+Number of Calls to miniMax: 5291
+
+For a 3x3 game, 3 to win, Random P1, Forced Moves, abPruning, DLS=5:
+Player Wins: 0
+Computer Wins: 403
+Tie Games: 97
+Avg. Game Time: 0.03029897739999069
+Number of Calls to miniMax: 7283
+
+For a 5x5 game, 5 to win, Random P1, Forced Moves, abPruning, DLS=1:
+Player Wins: 1
+Computer Wins: 284
+Tie Games: 177
+Avg. Game Time: 0.0945987428000035
+Number of Calls to miniMax: 13076
+
+For a 6x6 game, 6 to win, Random P1, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 221
+Tie Games: 259
+Avg. Game Time: 0.46421899979998854
+Number of Calls to miniMax: 53205
+
+For a 7x7 game, 7 to win, Random P1, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 276
+Tie Games: 198
+Avg. Game Time: 1.4936262761999832
+Number of Calls to miniMax: 140701
+
+For a 8x8 game, 8 to win, Random P1, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 161
+Tie Games: 315
+Avg. Game Time: 5.4980049206000166
+Number of Calls to miniMax: 443307
+
+For a 9x9 game, 9 to win, Random P1, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 264
+Tie Games: 221
+Avg. Game Time: 12.388975592200033
+Number of Calls to miniMax: 850342
+
+For a 10x10 game, 10 to win, Random P1, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 182
+Tie Games: 302
+Avg. Game Time: 37.77482837580003
+Number of Calls to miniMax: 2251106
+
+For a 5x5 game, 5 to win, Random P1, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 261
+Tie Games: 187
+Avg. Game Time: 0.8472784896000085
+Number of Calls to miniMax: 115836
+
+For a 6x6 game, 6 to win, Random P1, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 193
+Tie Games: 299
+Avg. Game Time: 5.470503644999873
+Number of Calls to miniMax: 623066
+
+For a 7x7 game, 7 to win, Random P1, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 227
+Tie Games: 255
+Avg. Game Time: 26.351195690799663
+Number of Calls to miniMax: 2483925
+
+For a 8x8 game, 8 to win, Random P1, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 166
+Tie Games: 310
+Avg. Game Time: 97.62970485539999
+Number of Calls to miniMax: 8032712
+
+
+==============================================================================
+AI FIRST
+
+For a 3x3 game, 3 to win, AI FIRST and Random P1, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 500
+Tie Games: 1
+Avg. Game Time: 0.0022504649999989398
+Number of Calls to miniMax: 463
+
+For a 5x5 game, 5 to win, AI FIRST and Random P1, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 426
+Tie Games: 14
+Avg. Game Time: 0.09197607379999591
+Number of Calls to miniMax: 13626
+
+For a 6x6 game, 6 to win, AI FIRST and Random P1, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 423
+Tie Games: 31
+Avg. Game Time: 0.526097410999998
+Number of Calls to miniMax: 62917
+
+For a 7x7 game, 7 to win, AI FIRST and Random P1, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 446
+Tie Games: 36
+Avg. Game Time: 1.309085981600003
+Number of Calls to miniMax: 131700
+
+For a 8x8 game, 8 to win, AI FIRST and Random P1, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 355
+Tie Games: 99
+Avg. Game Time: 5.77087705080001
+Number of Calls to miniMax: 489917
+
+For a 9x9 game, 9 to win, AI FIRST and Random P1, Forced Moves, abPruning, DLS=1:
+Player Wins: 0
+Computer Wins: 415
+Tie Games: 61
+Avg. Game Time: 10.294139916800018
+Number of Calls to miniMax: 742364
+
+
+
+For a 3x3 game, 3 to win, AI FIRST and Random P1, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 499
+Tie Games: 1
+Avg. Game Time: 0.007674211799996556
+Number of Calls to miniMax: 1673
+
+
+For a 5x5 game, 5 to win, AI FIRST and Random P1, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 416
+Tie Games: 27
+Avg. Game Time: 1.2331062308000005
+Number of Calls to miniMax: 160078
+
+For a 6x6 game, 6 to win, AI FIRST and Random P1, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 407
+Tie Games: 55
+Avg. Game Time: 6.707762684999998
+Number of Calls to miniMax: 753496
+
+For a 7x7 game, 7 to win, AI FIRST and Random P1, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 115
+Tie Games: 23
+Avg. Game Time: 33.00528803333333
+Number of Calls to miniMax: 3022592
+
+For a 7x7 game, 7 to win, AI FIRST and Random P1, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 38
+Tie Games: 5
+Avg. Game Time: 32.20723030600013
+Number of Calls to miniMax: 2914877
+
+For a 8x8 game, 8 to win, AI FIRST and Random P1, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 33
+Tie Games: 14
+Avg. Game Time: 110.8691187839998
+Number of Calls to miniMax: 8891153
+
+
+For a 9x9 game, 9 to win, AI FIRST and Random P1, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 21
+Tie Games: 2
+Avg. Game Time: 354.1507668159998
+Number of Calls to miniMax: 23389453
+
+For a 10x10 game, 10 to win, AI FIRST and Random P1, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 19
+Tie Games: 4
+Avg. Game Time: 949.9887416959994
+Number of Calls to miniMax: 57393419
+
+For a 10x10 game, 10 to win, AI FIRST and Random P1, Forced Moves, abPruning, DLS=2:
+Player Wins: 0
+Computer Wins: 156
+Tie Games: 62
+Avg. Game Time: 39.71058523279997
+Number of Calls to miniMax: 2387044
+

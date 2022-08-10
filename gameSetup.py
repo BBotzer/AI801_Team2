@@ -11,6 +11,8 @@ as well as determine who gets to go first, the player or the AI
 
 
 from displayBoard import *
+from fastWinConMark import *
+from winConditionsMarks import drawCondition
 
 
 def queryBoard():
@@ -54,3 +56,71 @@ def queryPlayer():
         #The AI shall start the game
         return False
     
+    
+   
+    
+    
+def gameCounter(board, player, comp, playerWin, compWin, tieGame):
+    
+    
+    if len(board) == 3:
+        if fastWinCon3Mark(board, player) == True:
+            playerWin += 1
+        elif fastWinCon3Mark(board, comp) == True:
+            compWin += 1     
+        elif drawCondition(board) == True:
+            tieGame += 1
+    
+    
+    elif len(board) == 5:
+        if fastWinCon5Mark(board, player) == True:
+            playerWin += 1
+        elif fastWinCon5Mark(board, comp) == True:
+            compWin += 1     
+        elif drawCondition(board) == True:
+            tieGame += 1
+            
+    elif len(board) == 6:
+        if fastWinCon6Mark(board, player) == True:
+            playerWin += 1
+        elif fastWinCon6Mark(board, comp) == True:
+            compWin += 1     
+        elif drawCondition(board) == True:
+            tieGame += 1
+            
+    elif len(board) == 7:
+        if fastWinCon7Mark(board, player) == True:
+            playerWin += 1
+        elif fastWinCon7Mark(board, comp) == True:
+            compWin += 1     
+        elif drawCondition(board) == True:
+            tieGame += 1
+            
+    elif len(board) == 8:
+        if fastWinCon8Mark(board, player) == True:
+            playerWin += 1
+        elif fastWinCon8Mark(board, comp) == True:
+            compWin += 1     
+        elif drawCondition(board) == True:
+            tieGame += 1
+            
+    elif len(board) == 9:
+        if fastWinCon9Mark(board, player) == True:
+            playerWin += 1
+        elif fastWinCon9Mark(board, comp) == True:
+            compWin += 1     
+        elif drawCondition(board) == True:
+            tieGame += 1
+            
+    elif len(board) == 10:
+        if fastWinCon10Mark(board, player) == True:
+            playerWin += 1
+        elif fastWinCon10Mark(board, comp) == True:
+            compWin += 1     
+        elif drawCondition(board) == True:
+            tieGame += 1
+
+
+    return playerWin, compWin, tieGame
+
+
